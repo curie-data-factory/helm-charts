@@ -1,0 +1,172 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-web
+  labels:
+    app: {{ .Values.image.name  }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+{{ include "redcap.labels" . | indent 4 }}
+spec:
+  replicas: {{ .Values.image.replicaCount }}
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: "{{ .Release.Name }}-{{ .Values.image.name }}"
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: "{{ .Release.Name }}-{{ .Values.image.name }}"
+        release: {{ .Release.Name }}
+      annotations:
+        rollme: {{ randAlphaNum 5 | quote }}
+    spec:
+      containers:
+      - args:
+        - /bin/bash
+        - /config/bootstrap.sh
+        env:
+        - name: DB_HOSTNAME
+          value: {{.Values.DB_HOSTNAME}}
+        - name: DB_NAME
+          value: {{.Values.DB_NAME}}
+        - name: DB_USERNAME
+          value: {{.Values.DB_USERNAME}}
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: DB_PASSWORD
+              name: redcap-server-secrets
+              optional: false
+        {{- if .Values.SMB_MOUNT_ENABLED }}
+        - name: SMB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: SMB_PASSWORD
+              name: redcap-server-secrets
+              optional: false
+        - name: SMB_USER
+          valueFrom:
+            secretKeyRef:
+              key: SMB_USER
+              name: redcap-server-secrets
+              optional: false
+        - name: SMB_SOURCEPATH
+          valueFrom:
+            secretKeyRef:
+              key: SMB_SOURCEPATH
+              name: redcap-server-secrets
+              optional: false
+        - name: SMB_DESTPATH
+          valueFrom:
+            secretKeyRef:
+              key: SMB_DESTPATH
+              name: redcap-server-secrets
+              optional: false
+        - name: SMB_DOMAIN
+          valueFrom:
+            secretKeyRef:
+              key: SMB_DOMAIN
+              name: redcap-server-secrets
+              optional: false
+        {{- end }}
+        - name: SALT
+          valueFrom:
+            secretKeyRef:
+              key: SALT
+              name: redcap-server-secrets
+        name: {{ .Values.image.name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        {{- if .Values.SMB_MOUNT_ENABLED }}
+        {{- if .Values.livenesscheck }}
+        livenessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - ls {{ .Values.SMB_DESTPATH }}/redcap
+          failureThreshold: 3
+          initialDelaySeconds: 10
+          periodSeconds: 60
+          successThreshold: 1
+          timeoutSeconds: 2
+        {{- end }}
+        securityContext:
+          allowPrivilegeEscalation: true
+          privileged: true
+        {{- end }}
+        ports:
+        - containerPort: {{ .Values.service.targetPort }}
+          name: {{ .Values.service.targetPort }}{{ .Values.service.protocol | lower }}
+          protocol: {{ .Values.service.protocol }}
+        volumeMounts:
+        - mountPath: /var/www/site/webtools2/ldap/
+          name: ldap-config
+        - mountPath: /config
+          name: bootstrap
+        {{- if .Values.persistence.enabled }}
+        - mountPath: /persistentedocs
+          name: persistentedocs
+        {{- end }}
+      imagePullSecrets:
+      - name: {{ .Values.imagePullSecrets }}
+      volumes:
+      - name: ldap-config
+        secret:
+          defaultMode: 511
+          items:
+          - key: ldap_config.php
+            path: ./ldap_config.php
+          optional: false
+          secretName: redcap-server-secrets
+      - configMap:
+          defaultMode: 256
+          items:
+          - key: bootstrap.sh
+            path: ./bootstrap.sh
+          name: {{ .Release.Name }}-conf
+          optional: false
+        name: bootstrap
+      {{- if .Values.persistence.enabled }}
+      - name: persistentedocs
+        persistentVolumeClaim:
+          claimName: {{ .Release.Name }}-{{ .Values.persistence.volumeName }}
+      initContainers:
+      - args:
+        - chmod
+        - -R
+        - "777"
+        - /persistentedocs
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: chmod
+        volumeMounts:
+        - mountPath: /persistentedocs
+          name: persistentedocs
+      {{- end }}
+      volumes:
+      - name: ldap-config
+        secret:
+          defaultMode: 511
+          items:
+          - key: ldap_config.php
+            path: ./ldap_config.php
+          optional: false
+          secretName: redcap-server-secrets
+      - configMap:
+          defaultMode: 256
+          items:
+          - key: bootstrap.sh
+            path: ./bootstrap.sh
+          name: {{ .Release.Name }}-conf
+          optional: false
+        name: bootstrap
+      {{- if .Values.persistence.enabled }}
+      - name: persistentedocs
+        persistentVolumeClaim:
+          claimName: {{ .Release.Name }}-{{ .Values.persistence.volumeName }}
+      {{- end }}

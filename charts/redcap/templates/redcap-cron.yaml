@@ -1,0 +1,47 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ .Release.Name }}-redcap-cron
+spec:
+  schedule: "{{ .Values.CRON_TASK_SCHEDULE }}"
+  jobTemplate:
+    spec:
+      activeDeadlineSeconds: 30
+      backoffLimit: 1
+      completions: 1
+      parallelism: 1
+      template:
+        metadata:
+          name: redcap-cron
+          labels:
+            name: redcap-cron
+        spec:
+          containers:
+          - args:
+            - /usr/bin/php
+            - /var/www/site/cron.php
+            env:
+            - name: DB_HOSTNAME
+              value: {{.Values.DB_HOSTNAME}}
+            - name: DB_NAME
+              value: {{.Values.DB_NAME}}
+            - name: DB_USERNAME
+              value: {{.Values.DB_USERNAME}}
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: DB_PASSWORD
+                  name: redcap-server-secrets
+                  optional: false
+            - name: SALT
+              valueFrom:
+                secretKeyRef:
+                  key: SALT
+                  name: redcap-server-secrets
+                  optional: false
+            image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+            imagePullPolicy: Always
+            name: redcap-cron
+          imagePullSecrets:
+          - name: {{ .Values.imagePullSecrets }}
+          restartPolicy: Never

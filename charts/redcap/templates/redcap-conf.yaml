@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-conf
+  namespace: {{ .Release.Namespace  }}
+data:
+  bootstrap.sh: |-
+    #!/bin/bash
+    # Montage CIFS
+
+    echo "username=$SMB_USER" > /root/.smbcred
+    echo "password=$SMB_PASSWORD" >> /root/.smbcred
+    echo "domain=$SMB_DOMAIN" >> /root/.smbcred
+
+    mkdir $SMB_DESTPATH
+    
+    mount -vvv -t cifs -o noperm,credentials=/root/.smbcred $SMB_SOURCEPATH $SMB_DESTPATH
+
+    # Lancement WATCHDOG
+    service watchdog start
+
+    # Lancement du serveur web apache
+    /usr/sbin/apache2ctl -D FOREGROUND
