@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-web
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ .Values.image.name }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      annotations:
+        rollme: {{ randAlphaNum 5 | quote }}
+      labels:
+        app.kubernetes.io/name: {{ .Values.image.name }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      containers:
+      - name: {{ .Values.image.name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.service.targetPort }}
+          name: {{ .Values.service.targetPort }}{{ .Values.service.protocol | lower }}
+          protocol: {{ .Values.service.protocol }}
+        volumeMounts:
+        - mountPath: {{ .Values.configMap.mountPath }}
+          name: configmap
+        - mountPath: {{ .Values.ldapConf.mountPath }}
+          name: ldapconf
+        - mountPath: /var/www/html/version/
+          name: version
+      imagePullSecrets:
+      - name: {{ .Values.imagePullSecrets }}
+      volumes:
+      - name: configmap
+        secret:
+          defaultMode: 511
+          items:
+          - key: conf.php
+            path: conf.php
+          - key: conf_cifs.json
+            path: conf_cifs.json
+          optional: false
+          secretName: config-{{ .Values.image.name }}
+      - name: ldapconf
+        secret:
+          defaultMode: 511
+          items:
+          - key: {{ .Values.ldapConf.key }}
+            path: {{ .Values.ldapConf.key }}
+          optional: false
+          secretName: ldap-{{ .Values.image.name }}
+      - name: version
+        configMap:
+          defaultMode: 0777
+          items:
+          - key: version.json
+            path: ./version.json
+          name: version
