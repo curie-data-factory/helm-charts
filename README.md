@@ -12,7 +12,7 @@ Feel free to fork our repo and create a pull request with any new features or bu
 
 ## Contacting us
 
-For issues or concerns, please fill out an issue or email us at charts@oteemo.com
+For issues or concerns, please fill out an issue or email us at data.factory@curie.fr
 
 ## How It Works
 
