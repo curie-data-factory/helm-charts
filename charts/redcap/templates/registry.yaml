@@ -1,10 +1,10 @@
-{{- if .Values.deploySecret -}}
+{{- if .Values.deployRegistry -}}
 apiVersion: v1
-data:
-  .dockerconfigjson: {{ .Values.dataSecret }}
 kind: Secret
+type: kubernetes.io/dockerconfigjson
 metadata:
   name: {{ .Values.imagePullSecrets }}
   namespace: {{ .Release.Namespace  }}
-type: kubernetes.io/dockerconfigjson
+data:
+  .dockerconfigjson: {{ .Values.dataSecret }}
 {{- end -}}
