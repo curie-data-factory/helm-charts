@@ -13,4 +13,14 @@ entries:
     urls:
     - https://github.com/curie-data-factory/helm-charts/releases/download/job-orchestrator-1.9.1/job-orchestrator-1.9.1.tgz
     version: 1.9.1
-generated: "2021-03-22T17:29:29.141877444Z"
+  redcap:
+  - apiVersion: v2
+    appVersion: 10.6.12
+    created: "2021-03-22T17:35:13.356704339Z"
+    description: Redcap application
+    digest: 0cef9d686f2d232c602c86c8cee0a3c8210ca0cc6407f0c8ac54d3e1fe16c1d7
+    name: redcap
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.6/redcap-1.9.6.tgz
+    version: 1.9.6
+generated: "2021-03-22T17:35:13.356731139Z"
