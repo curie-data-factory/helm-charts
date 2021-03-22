@@ -1,8 +1,0 @@
-apiVersion: v2
-appVersion: 2.7.1
-version: 1.9.0
-description: job orchestrator
-name: job-orchestrator
-maintainers:
-  - name: Armand LEOPOLD
-    email: armand.leopold@curie.fr

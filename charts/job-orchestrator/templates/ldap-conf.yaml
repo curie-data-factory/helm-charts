@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: Secret
-type: Opaque
-metadata:
-  name: ldap-{{ .Values.image.name }}
-  namespace: {{ .Release.Namespace  }}
-data:
-  {{ .Values.ldapConf.key }}: {{ .Values.ldapConf.data | b64enc }}
