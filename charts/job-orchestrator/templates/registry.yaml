@@ -1,4 +1,4 @@
-{{- if .Values.deploySecret -}}
+{{- if .Values.deployRegistry -}}
 apiVersion: v1
 kind: Secret
 type: kubernetes.io/dockerconfigjson

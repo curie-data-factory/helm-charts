@@ -6,7 +6,6 @@ kind: Secret
 metadata:
   name: config-{{ .Values.image.name }}
   namespace: {{ .Release.Namespace  }}
-  selfLink: /api/v1/namespaces/{{ .Release.Namespace  }}/secrets/config-{{ .Values.image.name }}
 type: Opaque
 ---
 apiVersion: v1
