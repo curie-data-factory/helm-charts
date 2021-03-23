@@ -1,4 +1,13 @@
+<p align="center">
+  <img width="75" height="77" src="https://curie.fr/themes/custom/curie/images/curie-logo.png">
+</p>
+
 # Curie Institute - Data Factory - Helm Charts Repository
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![](https://github.com/curie-data-factory/helm-charts/workflows/Release%20Charts/badge.svg?branch=master)](https://github.com//curie-data-factory/helm-charts/actions)
+<!-- [![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/)](https://artifacthub.io/packages/search?repo=) -->
+
 
 Welcome to the Data Factory - Curie Institute's charts repository. All charts are in the charts directory.
 
@@ -30,3 +39,7 @@ GitHub Pages points to the `gh-pages` branch so anything pushed to that branch w
 ## Notes about current testing
 
 Testing is currently done with Helm3
+
+## License
+
+[MIT License](./LICENSE).
