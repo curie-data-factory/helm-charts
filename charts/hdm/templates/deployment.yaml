@@ -1,0 +1,90 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Release.Name }}-{{ .Values.image.name }}"
+  labels:
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: "{{ .Release.Name }}-{{ .Values.image.name }}"
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: "{{ .Release.Name }}-{{ .Values.image.name }}"
+        release: {{ .Release.Name }}
+      annotations:
+        rollme: {{ randAlphaNum 5 | quote }}
+    spec:
+      containers:
+      - env:
+        - name: APACHE_LOG_DIR
+          value: /var/www/html/
+        - name: APACHE_RUN_DIR
+          value: /etc/apache2
+        - name: APACHE_RUN_GROUP
+          value: www-data
+        - name: APACHE_RUN_USER
+          value: www-data
+        name: {{ .Values.image.name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.service.targetPort }}
+          name: "{{ .Values.service.targetPort }}{{ .Values.service.protocol | lower }}"
+          protocol: {{ .Values.service.protocol }}
+        volumeMounts:
+        - mountPath: /var/www/html/conf/appli/
+          name: hdm-conf-appli
+        - mountPath: /var/www/html/conf/db/
+          name: hdm-conf-db
+        - mountPath: /var/www/html/conf/ldap/
+          name: hdm-conf-ldap
+        - mountPath: /var/www/html/version/
+          name: hdm-version
+      restartPolicy: Always
+      volumes:
+      - name: hdm-conf-appli
+        secret:
+          defaultMode: 0777
+          items:
+          - key: {{ .Values.confAppli.key }}
+            path: ./{{ .Values.confAppli.key }}
+          secretName: hdm-conf-appli
+      - name: hdm-conf-db
+        secret:
+          defaultMode: 0777
+          items:
+          - key: {{ .Values.confDb.key }}
+            path: ./{{ .Values.confDb.key }}
+          - key: {{ .Values.createTable.key }}
+            path: ./{{ .Values.createTable.key }}
+          optional: false
+          secretName: hdm-conf-db
+      - name: hdm-conf-ldap
+        secret:
+          defaultMode: 0777
+          items:
+          - key: {{ .Values.confLdap.key }}
+            path: ./{{ .Values.confLdap.key }}
+          secretName: hdm-conf-ldap
+      - name: hdm-version
+        configMap:
+          defaultMode: 0777
+          items:
+          - key: version.json
+            path: ./version.json
+          name: hdm-version
+      {{- if .Values.image.deployRegistry }}
+      imagePullSecrets:
+      - name: {{ .Values.image.imagePullSecrets }}
+      {{- end }}
