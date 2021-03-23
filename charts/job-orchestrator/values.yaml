@@ -1,44 +1,38 @@
-# Replica count for script runner & website
-replicaCount: 1
-
-# Images
 image:
-  repository: registry.compagny.com/job-orchestrator
+  replicaCount: 1
+  repository: registry.company.com/job-orchestrator
   tag: "1.3.0"
   pullPolicy: IfNotPresent
   name: job-orchestrator
-  # Image Pull Registry Secret
-  imagePullSecrets: registrysecret
   deployRegistry: false
+  imagePullSecrets: registrysecret
   dataSecret: |-
-    {"auths":{"registry.compagny.com":{"password":"","username":""}}}
+    {"auths":{"registry.company.com":{"password":"","username":""}}}
 
-# Service discovery for Website
 service:
   type: ClusterIP
   targetPort: 80
   protocol: TCP
 
-# Load Balancer
 ingress:
   enabled: true
-  url: job-orchestrator.compagny.com
+  hostnames:
+  - job-orchestrator.company.com
   tls:
   - hosts:
-    - job-orchestrator.compagny.com
+    - job-orchestrator.company.com
     secretName: job-orchestrator
 
-# ConfigMap
 configMap:
   mountPath: /var/www/html/conf/
   data: |-
-    "conf"
+    ""
 
   cifs: |-
-    "conf"
+    ""
 
 ldapConf:
   key: conf.php
   mountPath: /var/www/html/ldapconf/
   data: |-
-    "conf"
+    ""
