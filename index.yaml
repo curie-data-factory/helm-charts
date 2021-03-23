@@ -3,6 +3,24 @@ entries:
   job-orchestrator:
   - apiVersion: v2
     appVersion: 2.7.1
+    created: "2021-03-23T13:14:17.504060856Z"
+    description: Helm Chart for Job Orchestrator, Help Manages jobs by connecting
+      Gitlab Runners / Nexus Ressources with Kubernetes.
+    digest: 26f88d2f0ec2020c8d257d002eea740adc8878b6faf9d02cb9a8fd0d0e0e0703
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/job-orchestrator
+    icon: https://i.ibb.co/2sGpDKj/favicon.png
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: job-orchestrator
+    sources:
+    - https://github.com/curie-data-factory/job-orchestrator
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/job-orchestrator-1.9.3/job-orchestrator-1.9.3.tgz
+    version: 1.9.3
+  - apiVersion: v2
+    appVersion: 2.7.1
     created: "2021-03-23T10:45:12.988674871Z"
     description: job orchestrator
     digest: 11f22646538ef8ca1c4e1582cf94a1bccf88faaa80052a3fc11d764a80ab8385
@@ -32,6 +50,23 @@ entries:
   redcap:
   - apiVersion: v2
     appVersion: 10.6.12
+    created: "2021-03-23T13:14:17.642766064Z"
+    description: Helm chart for RedCap, A CRF Application for survey research.
+    digest: d374d1428b41b705334a155544aecc842f60dcb68347a308e040b84d22e3e517
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/redcap
+    icon: https://www.redcapbrasil.com.br/wp-content/uploads/2018/02/rbone.png
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: redcap
+    sources:
+    - https://www.project-redcap.org/
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.8/redcap-1.9.8.tgz
+    version: 1.9.8
+  - apiVersion: v2
+    appVersion: 10.6.12
     created: "2021-03-23T10:45:13.130831329Z"
     description: Redcap application
     digest: 8176d8f6ca11ed73c05cf4edb416b5d71874355244a1e6068e244db651bed630
@@ -55,4 +90,4 @@ entries:
     urls:
     - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.6/redcap-1.9.6.tgz
     version: 1.9.6
-generated: "2021-03-23T10:45:13.130841529Z"
+generated: "2021-03-23T13:14:17.642798753Z"
