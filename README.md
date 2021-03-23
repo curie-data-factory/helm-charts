@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![](https://github.com/curie-data-factory/helm-charts/workflows/Release%20Charts/badge.svg?branch=master)](https://github.com//curie-data-factory/helm-charts/actions)
-<!-- [![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/)](https://artifacthub.io/packages/search?repo=) -->
+[![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/curie-df-helm-charts)](https://artifacthub.io/packages/search?repo=curie-df-helm-charts)
 
 
 Welcome to the Data Factory - Curie Institute's charts repository. All charts are in the charts directory.
