@@ -16,11 +16,12 @@ service:
 
 ingress:
   enabled: true
-  url: hdm.company.com
+  hostnames:
+  - hdm.company.com
   tls:
   - hosts:
     - hdm.company.com
-    secretName: hdm-data
+    secretName: hdm
 
 confLdap:
   key: "conf-ldap.json"

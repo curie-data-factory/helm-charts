@@ -22,6 +22,6 @@ dependencies:
   - name: kibana
     repository: https://helm.elastic.co
     version: 7.10.1
-  # - name: mysql
-  #   repository: https://nexus-data.curie.net/repository/data-factory-helm-release
-  #   version: 2.3.6
+# - name: mysql
+#   repository: https://nexus-data.curie.net/repository/data-factory-helm-release
+#   version: 2.3.6
