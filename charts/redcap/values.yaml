@@ -1,0 +1,71 @@
+image:
+  repository: registry.compagny.com/job-orchestrator
+  tag: "1.3.0"
+  pullPolicy: Always
+  name: redcap
+  replicaCount: 1
+
+livenesscheck: true
+
+CRON_TASK_SCHEDULE: "0 * * * *"
+
+DB_HOSTNAME: ""
+DB_NAME: ""
+DB_USERNAME: ""
+DB_PASSWORD: ""
+
+SMB_MOUNT_ENABLED: true
+SMB_PASSWORD: ""
+SMB_USER: ""
+SMB_SOURCEPATH: ""
+SMB_DESTPATH: ""
+SMB_DOMAIN: ""
+
+SALT: ""
+
+LDAP: |
+  ""
+
+# Image Pull Registry Secret
+deployRegistry: false
+imagePullSecrets: registrysecret
+dataSecret: |-
+  {"auths":{"registry.compagny.com":{"password":"","username":""}}}
+
+# Ingress / Service discovery for Website
+service:
+  type: ClusterIP
+  targetPort: 80
+  protocol: TCP
+
+# Load Balancer
+ingress:
+  enabled: true
+
+  annotations:
+    nginx.ingress.kubernetes.io/client_max_body_size: "5000m"
+    nginx.ingress.kubernetes.io/proxy-body-size: "5000m"
+    nginx.ingress.kubernetes.io/client-body-timeout: "3600"
+    nginx.ingress.kubernetes.io/client-header-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/session-cookie-expires: "86400"
+    nginx.ingress.kubernetes.io/session-cookie-max-age: "86400"
+
+  hostnames:
+  - redcap.compagny.com
+  tls:
+  - hosts:
+    - redcap.compagny.com
+    secretName: redcap
+
+## Persist data to a persistent volume
+persistence:
+  enabled: false
+  existingClaim: false
+  size: 50Gi
+  storageClass: ""
+  accessMode: "ReadWriteOnce"
+  replicas: "1"
+  volumeName: "edocs"
+  mountPath: /var/www/site/edocs
