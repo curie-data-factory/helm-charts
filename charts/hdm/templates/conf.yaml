@@ -1,0 +1,28 @@
+apiVersion: v1
+data:
+  {{ .Values.confLdap.key }}: {{ .Values.confLdap.data | b64enc }}
+kind: Secret
+metadata:
+  name: hdm-conf-ldap
+---
+apiVersion: v1
+data:
+  {{ .Values.confDb.key }}: {{ .Values.confDb.data | b64enc }}
+  {{ .Values.createTable.key }}: {{ .Values.createTable.data | b64enc }}
+kind: Secret
+metadata:
+  name: hdm-conf-db
+---
+apiVersion: v1
+data:
+  {{ .Values.confAppli.key }}: {{ .Values.confAppli.data | b64enc }}
+kind: Secret
+metadata:
+  name: hdm-conf-appli
+---
+apiVersion: v1
+data:
+  version.json: "{\n\t\"version\": \" {{ .Values.image.tag }} \"\n}"
+kind: ConfigMap
+metadata:
+  name: hdm-version

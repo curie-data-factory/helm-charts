@@ -6,5 +6,5 @@ metadata:
   name: {{ .Values.image.imagePullSecrets }}
   namespace: {{ .Release.Namespace  }}
 data:
-  .dockerconfigjson: {{ .Values.image.dataSecret }}
+  .dockerconfigjson: {{ .Values.image.dataSecret | b64enc }}
 {{- end -}}

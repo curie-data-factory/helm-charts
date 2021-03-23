@@ -1,0 +1,125 @@
+image:
+  replicaCount: 1
+  repository: registry.company.com/hdm
+  tag: "2.7.1"
+  pullPolicy: IfNotPresent
+  name: hdm
+  deployRegistry: false
+  imagePullSecrets: registrysecret
+  dataSecret: |-
+    {"auths":{"registry.company.com":{"password":"","username":""}}}
+
+service:
+  type: ClusterIP
+  targetPort: 80
+  protocol: TCP
+
+ingress:
+  enabled: true
+  hostnames:
+  - hdm.company.com
+  tls:
+  - hosts:
+    - hdm.company.com
+    secretName: hdm
+
+confLdap:
+  key: "conf-ldap.json"
+  data: |
+    ""
+
+confDb:
+  key: "conf-db.json"
+  data: |
+    ""
+
+confAppli:
+  key: "conf-appli.json"
+  data: |
+    ""
+
+createTable:
+  key: "create_tables.sql"
+  data: |
+    ""
+
+################################################################################
+## MYSQL
+
+mysql:
+
+  vault:
+    enabled: false
+
+  # Docker image
+  image: "mysql"
+  imageTag: "8.0.18"
+
+  # Endpoint
+  ingress:
+    enabled: false
+
+  # Credentials
+  mysqlRootPassword:
+  mysqlReaderPassword:
+  mysqlDatabase: hdm
+  mysqlUser: hdm
+  mysqlPassword:
+
+  # Stockage
+  persistence:
+    size: 20Gi
+
+  # Init script
+  initializationFiles:
+    initscript.sql: |-
+      CREATE USER 'reader'@'%' IDENTIFIED BY '';
+      CREATE USER 'hdmssl'@'%' IDENTIFIED BY '' REQUIRE SSL;
+
+      GRANT ALL PRIVILEGES ON `hdm`.* TO 'hdm'@'%' WITH GRANT OPTION;
+      GRANT ALL PRIVILEGES ON `hdm`.* TO 'hdmssl'@'%' WITH GRANT OPTION;
+      GRANT SELECT, LOCK TABLES, SHOW VIEW, EVENT, TRIGGER  ON *.* TO 'reader'@'%';
+
+      ALTER USER 'root'@'%' REQUIRE SSL;
+      FLUSH PRIVILEGES;
+
+  cronjob:
+    volumes:
+      - hostPath:
+          path: ""
+        name: nfs-dump
+
+################################################################################
+## Kibana
+
+kibana:
+  elasticsearchHosts: http://hdm-deployement-elasticsearch-master:9200
+  ingress:
+    enabled: true
+    # annotations:
+    #   nginx.ingress.kubernetes.io/server-snippet: |
+    #     more_set_headers "Content-Security-Policy: script-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'";
+    path: /
+    hosts:
+      - hdm-kibana.company.com
+    tls:
+      - hosts:
+        - hdm-kibana.company.com
+        secretName: hdm-kibana
+
+################################################################################
+## Elasticsearch
+
+elasticsearch:
+  clusterName: "hdm-deployement-elasticsearch"
+  ingress:
+    enabled: true
+    path: /
+    hosts:
+      - hdm-elastic.company.com
+    tls:
+      - hosts:
+        - hdm-elastic.company.com
+        secretName: hdm-elastic
+  persistence:
+    enabled: false
