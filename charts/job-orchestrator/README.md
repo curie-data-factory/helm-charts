@@ -1,7 +1,3 @@
-# Job Orchestrator Helm chart :
-
-This repository contains the Helm chart for Job Orchestrator.
-
 # Job Orchestrator
 
 [Job Orchestrator](https://github.com/curie-data-factory/job-orchestrator) Help Manages jobs by connecting Gitlab Runners / Nexus Ressources with Kubernetes.
