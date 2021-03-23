@@ -13,7 +13,10 @@ Welcome to the Data Factory - Curie Institute's charts repository. All charts ar
 
 ## Adding the chart Repository
 
-`helm repo add curiedfcharts https://curie-data-factory.github.io/helm-charts`
+```
+helm repo add curiedfcharts https://curie-data-factory.github.io/helm-charts
+helm repo update
+```
 
 ## Contributing
 
