@@ -1,8 +1,12 @@
 apiVersion: v2
+name: job-orchestrator
+description: job orchestrator
+type: application
 appVersion: 2.7.1
 version: 1.9.2
-description: job orchestrator
-name: job-orchestrator
+home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/job-orchestrator
+sources:
+  - https://github.com/curie-data-factory/job-orchestrator
 maintainers:
-  - name: Armand LEOPOLD
+  - name: armandleopold
     email: armand.leopold@curie.fr
