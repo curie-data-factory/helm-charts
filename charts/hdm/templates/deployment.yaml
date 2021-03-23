@@ -6,8 +6,9 @@ metadata:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     heritage: {{ .Release.Service }}
     release: {{ .Release.Name }}
+{{ include "hdm.labels" . | indent 4 }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.image.replicaCount }}
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -26,7 +27,14 @@ spec:
         rollme: {{ randAlphaNum 5 | quote }}
     spec:
       containers:
-      - env:
+      - name: {{ .Values.image.name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.service.targetPort }}
+          name: "{{ .Values.service.targetPort }}{{ .Values.service.protocol | lower }}"
+          protocol: {{ .Values.service.protocol }}
+        env:
         - name: APACHE_LOG_DIR
           value: /var/www/html/
         - name: APACHE_RUN_DIR
@@ -35,13 +43,6 @@ spec:
           value: www-data
         - name: APACHE_RUN_USER
           value: www-data
-        name: {{ .Values.image.name }}
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        ports:
-        - containerPort: {{ .Values.service.targetPort }}
-          name: "{{ .Values.service.targetPort }}{{ .Values.service.protocol | lower }}"
-          protocol: {{ .Values.service.protocol }}
         volumeMounts:
         - mountPath: /var/www/html/conf/appli/
           name: hdm-conf-appli
@@ -51,7 +52,10 @@ spec:
           name: hdm-conf-ldap
         - mountPath: /var/www/html/version/
           name: hdm-version
-      restartPolicy: Always
+      {{- if .Values.image.deployRegistry }}
+      imagePullSecrets:
+      - name: {{ .Values.image.imagePullSecrets }}
+      {{- end }}
       volumes:
       - name: hdm-conf-appli
         secret:
@@ -84,7 +88,3 @@ spec:
           - key: version.json
             path: ./version.json
           name: hdm-version
-      {{- if .Values.image.deployRegistry }}
-      imagePullSecrets:
-      - name: {{ .Values.image.imagePullSecrets }}
-      {{- end }}

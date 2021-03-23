@@ -1,20 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-web
+  name: "{{ .Release.Name }}-{{ .Values.image.name }}"
+  labels:
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+{{ include "jobo.labels" . | indent 4 }}
 spec:
   replicas: {{ .Values.image.replicaCount }}
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ .Values.image.name }}
-      app.kubernetes.io/instance: {{ .Release.Name }}
+      app: "{{ .Release.Name }}-{{ .Values.image.name }}"
+      release: {{ .Release.Name }}
   template:
     metadata:
+      labels:
+        app: "{{ .Release.Name }}-{{ .Values.image.name }}"
+        release: {{ .Release.Name }}
       annotations:
         rollme: {{ randAlphaNum 5 | quote }}
-      labels:
-        app.kubernetes.io/name: {{ .Values.image.name }}
-        app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       containers:
       - name: {{ .Values.image.name }}
