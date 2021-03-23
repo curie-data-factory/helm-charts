@@ -28,13 +28,13 @@ ingress:
   - hosts:
     - job-orchestrator.compagny.com
     secretName: job-orchestrator
-    
+
 # ConfigMap
 configMap:
   mountPath: /var/www/html/conf/
   data: |-
     "conf"
-    
+
   cifs: |-
     "conf"
 
