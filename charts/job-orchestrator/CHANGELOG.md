@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Deprecated
 ### Removed -->
 
+## v1.9.2 - 2021-03-23
+
+> **IMPORTANT** - This release is only compatible with _Helm_ v3.
+
+## Added
+
+- Test CI/CD Github.
+
+
 ## v1.9.1 - 2021-03-23
 
 > **IMPORTANT** - This release is only compatible with _Helm_ v3.

@@ -33,12 +33,13 @@ ingress:
 configMap:
   mountPath: /var/www/html/conf/
   data: |-
-
+    "conf"
     
   cifs: |-
-
+    "conf"
 
 ldapConf:
   key: conf.php
   mountPath: /var/www/html/ldapconf/
   data: |-
+    "conf"
