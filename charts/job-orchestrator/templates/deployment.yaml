@@ -32,7 +32,7 @@ spec:
         - mountPath: /var/www/html/version/
           name: version
       imagePullSecrets:
-      - name: {{ .Values.imagePullSecrets }}
+      - name: {{ .Values.image.imagePullSecrets }}
       volumes:
       - name: configmap
         secret:

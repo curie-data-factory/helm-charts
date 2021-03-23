@@ -1,5 +1,12 @@
 apiVersion: v2
 name: redcap
-appVersion: 10.6.12
 description: Redcap application
-version: 1.9.6
+type: application
+version: 1.9.7
+appVersion: 10.6.12
+home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/redcap
+sources:
+  - https://www.project-redcap.org/
+maintainers:
+  - name: armandleopold
+    email: armand.leopold@curie.fr

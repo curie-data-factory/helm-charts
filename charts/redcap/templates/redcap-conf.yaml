@@ -13,7 +13,7 @@ data:
     echo "domain=$SMB_DOMAIN" >> /root/.smbcred
 
     mkdir $SMB_DESTPATH
-    
+
     mount -vvv -t cifs -o noperm,credentials=/root/.smbcred $SMB_SOURCEPATH $SMB_DESTPATH
 
     # Lancement WATCHDOG
