@@ -84,10 +84,10 @@ mysql:
       FLUSH PRIVILEGES;
 
   cronjob:
-      volumes:
-        - hostPath:
-            path: ""
-          name: nfs-dump
+    volumes:
+      - hostPath:
+          path: ""
+        name: nfs-dump
 
 ################################################################################
 ## Kibana
