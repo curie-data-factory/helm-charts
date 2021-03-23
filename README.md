@@ -1,5 +1,10 @@
 # Curie Institute - Data Factory - Helm Charts Repository
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![](https://github.com/curie-data-factory/helm-charts/workflows/Release%20Charts/badge.svg?branch=master)](https://github.com//curie-data-factory/helm-charts/actions)
+<!-- [![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/)](https://artifacthub.io/packages/search?repo=) -->
+
+
 Welcome to the Data Factory - Curie Institute's charts repository. All charts are in the charts directory.
 
 ## Adding the chart Repository
