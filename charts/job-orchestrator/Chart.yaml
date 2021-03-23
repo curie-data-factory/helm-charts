@@ -1,10 +1,11 @@
 apiVersion: v2
 name: job-orchestrator
-description: job orchestrator
+description: Helm Chart for Job Orchestrator, Help Manages jobs by connecting Gitlab Runners / Nexus Ressources with Kubernetes.
 type: application
 appVersion: 2.7.1
 version: 1.9.2
 home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/job-orchestrator
+icon: https://i.ibb.co/2sGpDKj/favicon.png
 sources:
   - https://github.com/curie-data-factory/job-orchestrator
 maintainers:
