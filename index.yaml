@@ -3,6 +3,31 @@ entries:
   job-orchestrator:
   - apiVersion: v2
     appVersion: 2.7.1
+    created: "2021-03-23T14:35:58.376655812Z"
+    description: Helm Chart for Job Orchestrator, Help Manages jobs by connecting
+      Gitlab Runners / Nexus Ressources with Kubernetes.
+    digest: 454beb967fead701412a16df5b22f1f7353a19fc15c9a0590b1b187ff368f69c
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/job-orchestrator
+    icon: https://i.ibb.co/2sGpDKj/favicon.png
+    keywords:
+    - kubernetes
+    - gitlab
+    - devops
+    - docker
+    - nexus
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: job-orchestrator
+    sources:
+    - https://github.com/curie-data-factory/job-orchestrator
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/job-orchestrator-1.9.5/job-orchestrator-1.9.5.tgz
+    version: 1.9.5
+  - apiVersion: v2
+    appVersion: 2.7.1
     created: "2021-03-23T13:26:46.415863958Z"
     description: Helm Chart for Job Orchestrator, Help Manages jobs by connecting
       Gitlab Runners / Nexus Ressources with Kubernetes.
@@ -75,6 +100,28 @@ entries:
   redcap:
   - apiVersion: v2
     appVersion: 10.6.12
+    created: "2021-03-23T14:35:58.504591536Z"
+    description: Helm chart for RedCap, A CRF Application for survey research.
+    digest: a4955bc7dcfc543f01c49bf5f2bb74338e06df46a748f1819df286b8ad0f87b0
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/redcap
+    icon: https://www.redcapbrasil.com.br/wp-content/uploads/2018/02/rbone.png
+    keywords:
+    - redcap
+    - crf
+    - research
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: redcap
+    sources:
+    - https://www.project-redcap.org/
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.10/redcap-1.9.10.tgz
+    version: 1.9.10
+  - apiVersion: v2
+    appVersion: 10.6.12
     created: "2021-03-23T13:26:46.543674975Z"
     description: Helm chart for RedCap, A CRF Application for survey research.
     digest: ef61bfceaccf54d31862d3ce3bdbb77f32c5078c7e7889a7a63ce19a00d08e1d
@@ -137,4 +184,4 @@ entries:
     urls:
     - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.6/redcap-1.9.6.tgz
     version: 1.9.6
-generated: "2021-03-23T13:26:46.543704076Z"
+generated: "2021-03-23T14:35:58.504634736Z"
