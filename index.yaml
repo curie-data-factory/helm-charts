@@ -3,6 +3,22 @@ entries:
   job-orchestrator:
   - apiVersion: v2
     appVersion: 2.7.1
+    created: "2021-03-23T10:45:12.988674871Z"
+    description: job orchestrator
+    digest: 11f22646538ef8ca1c4e1582cf94a1bccf88faaa80052a3fc11d764a80ab8385
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/job-orchestrator
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: job-orchestrator
+    sources:
+    - https://github.com/curie-data-factory/job-orchestrator
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/job-orchestrator-1.9.2/job-orchestrator-1.9.2.tgz
+    version: 1.9.2
+  - apiVersion: v2
+    appVersion: 2.7.1
     created: "2021-03-22T17:29:29.141871944Z"
     description: job orchestrator
     digest: 37ab0d029af6ff3cbeae6e0be006a9f57da182dd2b8490c43b409cc3be4e9fb1
@@ -16,6 +32,22 @@ entries:
   redcap:
   - apiVersion: v2
     appVersion: 10.6.12
+    created: "2021-03-23T10:45:13.130831329Z"
+    description: Redcap application
+    digest: 8176d8f6ca11ed73c05cf4edb416b5d71874355244a1e6068e244db651bed630
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/redcap
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: redcap
+    sources:
+    - https://www.project-redcap.org/
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.7/redcap-1.9.7.tgz
+    version: 1.9.7
+  - apiVersion: v2
+    appVersion: 10.6.12
     created: "2021-03-22T17:35:13.356704339Z"
     description: Redcap application
     digest: 0cef9d686f2d232c602c86c8cee0a3c8210ca0cc6407f0c8ac54d3e1fe16c1d7
@@ -23,4 +55,4 @@ entries:
     urls:
     - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.6/redcap-1.9.6.tgz
     version: 1.9.6
-generated: "2021-03-22T17:35:13.356731139Z"
+generated: "2021-03-23T10:45:13.130841529Z"
