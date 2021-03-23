@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="75" height="77" src="https://curie.fr/themes/custom/curie/images/curie-logo.png">
+</p>
+
 # Curie Institute - Data Factory - Helm Charts Repository
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
