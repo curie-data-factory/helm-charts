@@ -1,6 +1,6 @@
 apiVersion: v2
 appVersion: 2.7.1
-version: 1.9.1
+version: 1.9.2
 description: job orchestrator
 name: job-orchestrator
 maintainers:
