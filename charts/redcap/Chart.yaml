@@ -2,8 +2,8 @@ apiVersion: v2
 name: redcap
 description: Helm chart for RedCap, A CRF Application for survey research.
 type: application
-version: 1.9.8
 appVersion: 10.6.12
+version: 1.9.9
 home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/redcap
 icon: https://www.redcapbrasil.com.br/wp-content/uploads/2018/02/rbone.png
 sources:
@@ -11,3 +11,8 @@ sources:
 maintainers:
   - name: armandleopold
     email: armand.leopold@curie.fr
+kubeVersion: ">= 1.14.0-0"
+keywords:
+  - redcap
+  - crf
+  - research
