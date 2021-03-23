@@ -2,4 +2,4 @@ apiVersion: v2
 name: redcap
 appVersion: 10.6.12
 description: Redcap application
-version: 1.9.6
+version: 1.9.7
