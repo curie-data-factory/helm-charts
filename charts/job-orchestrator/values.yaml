@@ -5,14 +5,13 @@ replicaCount: 1
 image:
   repository: registry.compagny.com/job-orchestrator
   tag: "1.3.0"
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
   name: job-orchestrator
-
-# Image Pull Registry Secret
-deployRegistry: false
-imagePullSecrets: registrysecret
-dataSecret: |-
-  {"auths":{"registry.compagny.com":{"password":"","username":""}}}
+  # Image Pull Registry Secret
+  imagePullSecrets: registrysecret
+  deployRegistry: false
+  dataSecret: |-
+    {"auths":{"registry.compagny.com":{"password":"","username":""}}}
 
 # Service discovery for Website
 service:
