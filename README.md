@@ -35,3 +35,7 @@ GitHub Pages points to the `gh-pages` branch so anything pushed to that branch w
 ## Notes about current testing
 
 Testing is currently done with Helm3
+
+## License
+
+[MIT License](./LICENSE).
