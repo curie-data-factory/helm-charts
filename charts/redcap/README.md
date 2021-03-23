@@ -20,10 +20,10 @@ helm upgrade --install --namespace default --values ./my-values.yaml my-release 
 | Parameter                        | Description                                      | Default                                                             |
 |----------------------------------|--------------------------------------------------|---------------------------------------------------------------------|
 | `image.replicaCount`             | Number of replicas to create                     | `1`                                                                 |
-| `image.repository`               | Image repository.                                | `registry.compagny.com/job-orchestrator`                            |
+| `image.repository`               | Image repository.                                | `registry.compagny.com/redcap`                                      |
 | `image.tag`                      | Image Tag.                                       | `1.3.0`                                                             |
 | `image.pullPolicy`               | Image pull policy.                               | `IfNotPresent`                                                      |
-| `image.name`                     | Image name                                       | `job-orchestrator`                                                  |
+| `image.name`                     | Image name                                       | `redcap`                                                            |
 | `image.deployRegistry`           | If the image is stored in a private registry     | `false`                                                             |
 | `image.imagePullSecrets`         | Docker registry credentials Secret name          | `registrysecret`                                                    |
 | `image.dataSecret`               | Secret storing docker image registry credentials | `{"auths":{"registry.compagny.com":{"password":"","username":""}}}` |
@@ -32,10 +32,10 @@ helm upgrade --install --namespace default --values ./my-values.yaml my-release 
 | `service.targetPort`             | Service Port                                     | `80`                                                                |
 | `service.protocol`               | Service Protocol                                 | `TCP`                                                               |
 | `ingress.enabled`                | Expose application with ingress                  | `true`                                                              |
-| `ingress.hostnames`              | Urls of exposed application                      | `['job-orchestrator.company.com']`                                  |
+| `ingress.hostnames`              | Urls of exposed application                      | `['redcap.company.com']`                                            |
 | `ingress.tls`                    | Array of TLS Hosts                               | `[]`                                                                |
-| `ingress.tls[hosts]`             | Host name                                        | `['job-orchestrator.company.com']`                                  |
-| `ingress.tls[hosts[secretName]]` | Secret for the current host name                 | `job-orchestrator`                                                  |
+| `ingress.tls[hosts]`             | Host name                                        | `['redcap.company.com']`                                            |
+| `ingress.tls[hosts[secretName]]` | Secret for the current host name                 | `redcap`                                                            |
 | `persistence.enabled`            | Enable persisting data on PVC                    | `false`                                                             |
 | `persistence.existingClaim`      | Does PVC already exist ?                         | `false`                                                             |
 | `persistence.size`               | PVC Size                                         | `50Gi`                                                              |
