@@ -5,7 +5,7 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - name: "http"
+    - name: {{ .Values.service.targetPort }}{{ .Values.service.protocol }}
       port: {{ .Values.service.targetPort }}
       protocol: {{ .Values.service.protocol }}
       targetPort: {{ .Values.service.targetPort }}
