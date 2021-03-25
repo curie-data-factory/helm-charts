@@ -41,7 +41,7 @@ The following table lists the configurable parameters of the chart and their def
 | `deploySecret`                   | Wether or not to deploy the secret containing Doccano ADMIN_PASSWORD | `true`                                                              |
 | `ADMIN_PASSWORD`                 | Doccano Admin Password                                               | `password`                                                          |
 | `service.type`                   | Service Type                                                         | `ClusterIP`                                                         |
-| `service.targetPort`             | Service Port                                                         | `80`                                                                |
+| `service.targetPort`             | Service Port                                                         | `8000`                                                                |
 | `service.protocol`               | Service Protocol                                                     | `TCP`                                                               |
 | `ingress.enabled`                | Expose application with ingress                                      | `true`                                                              |
 | `ingress.hostnames`              | Urls of exposed application                                          | `['doccano.company.com']`                                           |

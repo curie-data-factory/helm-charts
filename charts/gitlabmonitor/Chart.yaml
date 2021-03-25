@@ -1,0 +1,22 @@
+apiVersion: v2
+name: gitlab-monitor
+description: A web-based monitor dashboard for GitLab CI
+appVersion: "1.7"
+version: 1.2.5
+home: https://github.com/timoschwarzer/gitlab-monitor
+icon: https://github.com/timoschwarzer/gitlab-monitor/blob/main/logo.svg
+sources:
+  - https://github.com/timoschwarzer/gitlab-monitor
+maintainers:
+  - name: armandleopold
+    email: armand.leopold@curie.fr
+kubeVersion: ">= 1.14.0-0"
+keywords:
+  - dashboard
+  - devops
+  - gitlab
+  - git
+annotations:
+  artifacthub.io/images: |
+    - name: gitlab-monitor
+      image: timoschwarzer/gitlab-monitor:latest

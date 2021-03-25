@@ -1,0 +1,74 @@
+image:
+  replicaCount: 1
+  pullPolicy: IfNotPresent
+  repository: timoschwarzer/gitlab-monitor
+  name: gitlabmonitor
+  tag: "latest"
+  deployRegistry: false
+  imagePullSecrets: registrysecret
+  dataSecret: |-
+    {"auths":{"registry.company.com":{"password":"","username":""}}}
+
+service:
+  type: ClusterIP
+  targetPort: 80
+  protocol: TCP
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+ingress:
+  enabled: true
+  hostnames:
+  - gitlabmonitor.company.com
+  tls:
+  - hosts:
+    - gitlabmonitor.company.com
+    secretName: gitlabmonitor
+
+config: |
+  {
+    "title": "Gitlabmonitor",
+    "pollingIntervalMultiplier": 1.0,
+    "gitlabApi": "https://gitlab.com/api/v4",
+    "privateToken": "",
+    "maxAge": 168,
+    "fetchCount": 101,
+    "pipelinesOnly": true,
+    "showRestartedJobs": false,
+    "showPipelineIds": false,
+    "showUsers": true,
+    "showJobs": "iconAndName",
+    "projectVisibility": "private",
+    "backgroundRefresh": false,
+    "showProjectOnlyOn": [
+      "pending",
+      "running",
+      "failed",
+      "canceled",
+      "skipped",
+      "manual",
+      "success" ],
+    "filter": {
+      "include": ".*",
+      "includeTags": ".*",
+      "exclude": null,
+      "excludeTags": null
+    },
+    "projectFilter": {
+      "*": {
+        "include": ".*",
+        "exclude": null,
+        "default": "master",
+        "showMerged": false,
+        "showTags": true,
+        "historyCount": 3,
+        "notifyFailureOn": null
+      }
+    }
+  }

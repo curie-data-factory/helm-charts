@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Release.Name }}-{{ .Values.image.name }}"
+  labels:
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+{{ include "gitlabmonitor.labels" . | indent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: "{{ .Release.Name }}-{{ .Values.image.name }}"
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: "{{ .Release.Name }}-{{ .Values.image.name }}"
+        release: {{ .Release.Name }}
+      annotations:
+        rollme: {{ randAlphaNum 5 | quote }}
+    spec:
+      containers:
+      - name: {{ .Values.image.name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        env:
+        - name: GITLAB_MONITOR_CONFIG
+          value: | {{ .Values.config | trim | nindent 12 }}
+        ports:
+        - containerPort: {{ .Values.service.targetPort }}
+          name: {{ .Values.service.targetPort }}{{ .Values.service.protocol | lower }}
+          protocol: {{ .Values.service.protocol }}
+        resources:
+{{ toYaml .Values.resources | indent 12 }}
+      imagePullSecrets:
+      - name: {{ .Values.image.imagePullSecrets }}
