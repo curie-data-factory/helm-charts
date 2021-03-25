@@ -1,6 +1,63 @@
 apiVersion: v1
 entries:
+  doccano:
+  - annotations:
+      artifacthub.io/images: |
+        - name: doccano
+          image: doccano/doccano:1.2.2
+    apiVersion: v2
+    appVersion: 1.2.2
+    created: "2021-03-25T10:53:36.824558217Z"
+    description: A Helm chart for doccano, Open source text annotation tool for machine
+      learning practitioner.
+    digest: 6d7f7037c8de717b74157106163bab252b7cce461f1df9b035a9c2e0e757c3fa
+    home: https://doccano.herokuapp.com/
+    icon: https://raw.githubusercontent.com/doccano/doccano/master/docs/images/logo/doccano.png
+    keywords:
+    - annotation
+    - ml
+    - text
+    - machine-learning
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: doccano
+    sources:
+    - https://github.com/doccano/doccano
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/doccano-1.3.0/doccano-1.3.0.tgz
+    version: 1.3.0
   hdm:
+  - apiVersion: v2
+    appVersion: 2.2.0
+    created: "2021-03-25T10:53:36.942798974Z"
+    dependencies:
+    - name: elasticsearch
+      repository: https://helm.elastic.co
+      version: 7.10.1
+    - name: kibana
+      repository: https://helm.elastic.co
+      version: 7.10.1
+    description: Helm chart for HDM (Health Data Metrics) a Data Quality assesment
+      Application.
+    digest: 8c232acb346e3b321bc42259a6378cae0153680442bd03d3e93cf68e4928baf4
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/hdm
+    icon: https://i.ibb.co/fqWJSVV/logo-hdm.png
+    keywords:
+    - data
+    - quality
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: hdm
+    sources:
+    - https://github.com/curie-data-factory/health-data-metrics
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/hdm-2.3.3/hdm-2.3.3.tgz
+    version: 2.3.3
   - apiVersion: v2
     appVersion: 2.2.0
     created: "2021-03-23T17:43:02.929747517Z"
@@ -31,6 +88,31 @@ entries:
     - https://github.com/curie-data-factory/helm-charts/releases/download/hdm-2.3.2/hdm-2.3.2.tgz
     version: 2.3.2
   job-orchestrator:
+  - apiVersion: v2
+    appVersion: 2.7.1
+    created: "2021-03-25T10:53:37.048280627Z"
+    description: Helm Chart for Job Orchestrator, Help Manages jobs by connecting
+      Gitlab Runners / Nexus Ressources with Kubernetes.
+    digest: 427431fbbe722e1e680fcbe2c307c7ddedd087fbfaa19a43e38b04f4f9a6f5e1
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/job-orchestrator
+    icon: https://i.ibb.co/2sGpDKj/favicon.png
+    keywords:
+    - kubernetes
+    - gitlab
+    - devops
+    - docker
+    - nexus
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: job-orchestrator
+    sources:
+    - https://github.com/curie-data-factory/job-orchestrator
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/job-orchestrator-1.9.7/job-orchestrator-1.9.7.tgz
+    version: 1.9.7
   - apiVersion: v2
     appVersion: 2.7.1
     created: "2021-03-23T17:43:03.379687552Z"
@@ -153,6 +235,28 @@ entries:
     - https://github.com/curie-data-factory/helm-charts/releases/download/job-orchestrator-1.9.1/job-orchestrator-1.9.1.tgz
     version: 1.9.1
   redcap:
+  - apiVersion: v2
+    appVersion: 10.6.12
+    created: "2021-03-25T10:53:37.152530671Z"
+    description: Helm chart for RedCap, A CRF Application for survey research.
+    digest: d3e7c970bb86836237dd25841d368689acc2db2505509880641fac4b7ceab2f6
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/redcap
+    icon: https://www.redcapbrasil.com.br/wp-content/uploads/2018/02/rbone.png
+    keywords:
+    - redcap
+    - crf
+    - research
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: redcap
+    sources:
+    - https://www.project-redcap.org/
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.13/redcap-1.9.13.tgz
+    version: 1.9.13
   - apiVersion: v2
     appVersion: 10.6.12
     created: "2021-03-23T17:43:03.808719785Z"
@@ -283,4 +387,4 @@ entries:
     urls:
     - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.6/redcap-1.9.6.tgz
     version: 1.9.6
-generated: "2021-03-23T17:43:03.808766485Z"
+generated: "2021-03-25T10:53:37.153288877Z"
