@@ -17,6 +17,11 @@ After you've installed the repo you can install the chart.
 helm upgrade --install --namespace default --values ./my-values.yaml my-release curiedfcharts/redcap
 ```
 
+## Configuration
+
+The following table lists the configurable parameters of the chart and their default values.
+
+
 | Parameter                        | Description                                      | Default                                                             |
 |----------------------------------|--------------------------------------------------|---------------------------------------------------------------------|
 | `image.replicaCount`             | Number of replicas to create                     | `1`                                                                 |

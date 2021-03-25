@@ -1,0 +1,41 @@
+image:
+  replicaCount: 1
+  repository: doccano/doccano
+  tag: "1.2.2"
+  pullPolicy: IfNotPresent
+  name: doccano
+  deployRegistry: false
+  imagePullSecrets: registrysecret
+  dataSecret: |-
+    {"auths":{"registry.company.com":{"password":"","username":""}}}
+
+env:
+  ADMIN_EMAIL: admin@company.com
+  ADMIN_USERNAME: admin
+
+deploySecret: true
+ADMIN_PASSWORD: password
+
+service:
+  type: ClusterIP
+  targetPort: 8000
+  protocol: TCP
+
+ingress:
+  enabled: true
+  hostnames:
+  - doccano.company.com
+  tls:
+  - hosts:
+    - doccano.company.com
+    secretName: doccano
+
+persistence:
+  enabled: true
+  existingClaim: false
+  size: 10Gi
+  storageClass: ""
+  accessMode: "ReadWriteOnce"
+  replicas: "1"
+  volumeName: "data"
+  mountPath: /data

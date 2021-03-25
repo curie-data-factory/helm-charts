@@ -19,7 +19,7 @@ helm upgrade --install --namespace default --values ./my-values.yaml my-release 
 
 ## Configuration
 
-The following table lists the configurable parameters of the _job-orchestrator_ chart and their default values.
+The following table lists the configurable parameters of the chart and their default values.
 
 | Parameter                        | Description                                      | Default                                                             |
 |----------------------------------|--------------------------------------------------|---------------------------------------------------------------------|
