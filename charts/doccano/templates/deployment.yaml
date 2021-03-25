@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Release.Name }}-{{ .Values.image.name }}"
+  labels:
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+{{ include "doccano.labels" . | indent 4 }}
+spec:
+  strategy:
+    type: Recreate
+  replicas: {{ .Values.image.replicaCount }}
+  selector:
+    matchLabels:
+      app: "{{ .Release.Name }}-{{ .Values.image.name }}"
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: "{{ .Release.Name }}-{{ .Values.image.name }}"
+        release: {{ .Release.Name }}
+      annotations:
+        rollme: {{ randAlphaNum 5 | quote }}
+    spec:
+      containers:
+      - env:
+        - name: ADMIN_EMAIL
+          value: {{ .Values.env.ADMIN_EMAIL }}
+        - name: ADMIN_USERNAME
+          value: {{ .Values.env.ADMIN_USERNAME }}
+        - name: ADMIN_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: ADMIN_PASSWORD
+              name: doccano-password
+              optional: false
+        name: {{ .Values.image.name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.service.targetPort }}
+          name: {{ .Values.service.targetPort }}{{ .Values.service.protocol | lower }}
+          protocol: {{ .Values.service.protocol }}
+        volumeMounts:
+        - mountPath: {{ .Values.persistence.mountPath }}
+          name: {{ .Values.persistence.volumeName }}
+      imagePullSecrets:
+      - name: {{ .Values.imagePullSecrets }}
+      initContainers:
+      - args:
+        - chown
+        - "1000:1000"
+        - {{ .Values.persistence.mountPath }}
+        image: busybox
+        imagePullPolicy: IfNotPresent
+        name: chmod
+        volumeMounts:
+        - mountPath: {{ .Values.persistence.mountPath }}
+          name: {{ .Values.persistence.volumeName }}
+      volumes:
+      - name: {{ .Values.persistence.volumeName }}
+        persistentVolumeClaim:
+          claimName: "{{ .Release.Name }}-{{ .Values.persistence.volumeName }}"
