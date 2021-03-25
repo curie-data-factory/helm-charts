@@ -62,6 +62,32 @@ entries:
           image: timoschwarzer/gitlab-monitor:latest
     apiVersion: v2
     appVersion: "1.7"
+    created: "2021-03-25T12:04:18.094938898Z"
+    description: A web-based monitor dashboard for GitLab CI
+    digest: cd162229e9c8f8bf5fc339393c639d552b378b91eb56c37d72d162659c29c7c5
+    home: https://github.com/timoschwarzer/gitlab-monitor
+    icon: https://i.ibb.co/vVys3Yt/logo.png
+    keywords:
+    - dashboard
+    - devops
+    - gitlab
+    - git
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: gitlab-monitor
+    sources:
+    - https://github.com/timoschwarzer/gitlab-monitor
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/gitlab-monitor-1.2.6/gitlab-monitor-1.2.6.tgz
+    version: 1.2.6
+  - annotations:
+      artifacthub.io/images: |
+        - name: gitlab-monitor
+          image: timoschwarzer/gitlab-monitor:latest
+    apiVersion: v2
+    appVersion: "1.7"
     created: "2021-03-25T11:32:53.839324709Z"
     description: A web-based monitor dashboard for GitLab CI
     digest: b9d0fd499223c4b9af0373337215d3791f343399680879943b6c287759c54769
@@ -441,4 +467,4 @@ entries:
     urls:
     - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.6/redcap-1.9.6.tgz
     version: 1.9.6
-generated: "2021-03-25T11:32:53.839664411Z"
+generated: "2021-03-25T12:04:18.095006898Z"
