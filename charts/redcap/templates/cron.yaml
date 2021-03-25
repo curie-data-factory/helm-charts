@@ -40,8 +40,10 @@ spec:
                   name: redcap-server-secrets
                   optional: false
             image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-            imagePullPolicy: Always
+            imagePullPolicy: {{ .Values.image.pullPolicy }}
             name: redcap-cron
+          {{- if .Values.image.deployRegistry }}
           imagePullSecrets:
-          - name: {{ .Values.imagePullSecrets }}
+          - name: "{{ .Values.image.name }}-{{ .Values.image.imagePullSecrets }}"
+          {{- end }}
           restartPolicy: Never

@@ -5,7 +5,7 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - name: {{ .Values.service.targetPort }}{{ .Values.service.protocol }}
+    - name: {{ .Values.service.targetPort }}{{ .Values.service.protocol | lower }}
       port: {{ .Values.service.targetPort }}
       protocol: {{ .Values.service.protocol }}
       targetPort: {{ .Values.service.targetPort }}
