@@ -45,8 +45,10 @@ spec:
         volumeMounts:
         - mountPath: {{ .Values.persistence.mountPath }}
           name: {{ .Values.persistence.volumeName }}
+      {{- if .Values.image.deployRegistry }}
       imagePullSecrets:
-      - name: {{ .Values.image.imagePullSecrets }}
+      - name: "{{ .Values.image.name }}-{{ .Values.image.imagePullSecrets }}"
+      {{- end }}
       initContainers:
       - args:
         - chown

@@ -113,7 +113,7 @@ spec:
         {{- end }}
       {{- if .Values.image.deployRegistry }}
       imagePullSecrets:
-      - name: {{ .Values.image.imagePullSecrets }}
+      - name: "{{ .Values.image.name }}-{{ .Values.image.imagePullSecrets }}"
       {{- end }}
       volumes:
       - name: ldap-config
