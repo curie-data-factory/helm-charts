@@ -46,7 +46,7 @@ spec:
         - mountPath: {{ .Values.persistence.mountPath }}
           name: {{ .Values.persistence.volumeName }}
       imagePullSecrets:
-      - name: {{ .Values.imagePullSecrets }}
+      - name: {{ .Values.image.imagePullSecrets }}
       initContainers:
       - args:
         - chown
