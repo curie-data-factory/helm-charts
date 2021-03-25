@@ -2,6 +2,7 @@ image:
   replicaCount: 1
   pullPolicy: IfNotPresent
   repository: timoschwarzer/gitlab-monitor
+  name: gitlabmonitor
   tag: "latest"
   deployRegistry: false
   imagePullSecrets: registrysecret
