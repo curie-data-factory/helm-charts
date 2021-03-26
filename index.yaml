@@ -269,6 +269,35 @@ entries:
     version: 1.2.5
   hdm:
   - apiVersion: v2
+    appVersion: 2.2.1
+    created: "2021-03-26T16:36:38.455554602Z"
+    dependencies:
+    - name: elasticsearch
+      repository: https://helm.elastic.co
+      version: 7.10.1
+    - name: kibana
+      repository: https://helm.elastic.co
+      version: 7.10.1
+    description: Helm chart for HDM (Health Data Metrics) a Data Quality assesment
+      Application.
+    digest: 5c6f12bb6515c64d5e6a0a63fb4d6bbf35da7083232e6e7ba229d9e2beb0ebc7
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/hdm
+    icon: https://i.ibb.co/fqWJSVV/logo-hdm.png
+    keywords:
+    - data
+    - quality
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: hdm
+    sources:
+    - https://github.com/curie-data-factory/health-data-metrics
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/hdm-2.3.7/hdm-2.3.7.tgz
+    version: 2.3.7
+  - apiVersion: v2
     appVersion: 2.2.0
     created: "2021-03-25T15:01:45.553277666Z"
     dependencies:
@@ -414,6 +443,31 @@ entries:
     - https://github.com/curie-data-factory/helm-charts/releases/download/hdm-2.3.2/hdm-2.3.2.tgz
     version: 2.3.2
   job-orchestrator:
+  - apiVersion: v2
+    appVersion: 1.3.2
+    created: "2021-03-26T16:36:41.618419598Z"
+    description: Helm Chart for Job Orchestrator, Help Manages jobs by connecting
+      Gitlab Runners / Nexus Ressources with Kubernetes.
+    digest: b09615d73db132a7277e57399a6d11fd9ee139320dff5372fad19efa3d0fdfc0
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/job-orchestrator
+    icon: https://i.ibb.co/2sGpDKj/favicon.png
+    keywords:
+    - kubernetes
+    - gitlab
+    - devops
+    - docker
+    - nexus
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: job-orchestrator
+    sources:
+    - https://github.com/curie-data-factory/job-orchestrator
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/job-orchestrator-1.9.11/job-orchestrator-1.9.11.tgz
+    version: 1.9.11
   - apiVersion: v2
     appVersion: 2.7.1
     created: "2021-03-25T15:01:45.696653854Z"
@@ -854,4 +908,4 @@ entries:
     urls:
     - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.6/redcap-1.9.6.tgz
     version: 1.9.6
-generated: "2021-03-25T15:01:45.836175818Z"
+generated: "2021-03-26T16:36:41.618627903Z"
