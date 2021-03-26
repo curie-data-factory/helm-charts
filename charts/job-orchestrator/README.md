@@ -24,8 +24,8 @@ The following table lists the configurable parameters of the chart and their def
 | Parameter                        | Description                                      | Default                                                             |
 |----------------------------------|--------------------------------------------------|---------------------------------------------------------------------|
 | `image.replicaCount`             | Number of replicas to create                     | `1`                                                                 |
-| `image.repository`               | Image repository.                                | `registry.compagny.com/job-orchestrator`                            |
-| `image.tag`                      | Image Tag.                                       | `1.3.0`                                                             |
+| `image.repository`               | Image repository.                                | `ghcr.io/curie-data-factory/job-orchestrator`                            |
+| `image.tag`                      | Image Tag.                                       | `1.3.2`                                                             |
 | `image.pullPolicy`               | Image pull policy.                               | `IfNotPresent`                                                      |
 | `image.name`                     | Image name                                       | `job-orchestrator`                                                  |
 | `image.deployRegistry`           | If the image is stored in a private registry     | `false`                                                             |

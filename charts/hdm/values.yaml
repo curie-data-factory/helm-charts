@@ -1,7 +1,7 @@
 image:
   replicaCount: 1
-  repository: registry.company.com/hdm
-  tag: "2.7.1"
+  repository: ghcr.io/curie-data-factory/hdm
+  tag: "2.2.1"
   pullPolicy: IfNotPresent
   name: hdm
   deployRegistry: false

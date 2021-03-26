@@ -1,7 +1,7 @@
 image:
   replicaCount: 1
-  repository: registry.company.com/job-orchestrator
-  tag: "1.3.0"
+  repository: ghcr.io/curie-data-factory/job-orchestrator
+  tag: "1.3.2"
   pullPolicy: IfNotPresent
   name: job-orchestrator
   deployRegistry: false
