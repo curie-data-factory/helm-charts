@@ -70,4 +70,4 @@ spec:
           items:
           - key: version.json
             path: ./version.json
-          name: version
+          name: "{{ .Release.Name }}-version"

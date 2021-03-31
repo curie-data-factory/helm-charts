@@ -13,4 +13,4 @@ data:
   version.json: "{\n\t\"version\": \" {{ .Values.image.tag }} \"\n}"
 kind: ConfigMap
 metadata:
-  name: version
+  name: "{{ .Release.Name }}-version"

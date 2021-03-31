@@ -87,4 +87,4 @@ spec:
           items:
           - key: version.json
             path: ./version.json
-          name: hdm-version
+          name: "{{ .Release.Name }}-version"
