@@ -323,6 +323,38 @@ entries:
   hdm:
   - apiVersion: v2
     appVersion: 2.2.1
+    created: "2021-04-06T11:56:59.652886173Z"
+    dependencies:
+    - name: mysql
+      repository: https://charts.bitnami.com/bitnami
+      version: 8.5.1
+    - name: elasticsearch
+      repository: https://helm.elastic.co
+      version: 7.10.1
+    - name: kibana
+      repository: https://helm.elastic.co
+      version: 7.10.1
+    description: Helm chart for HDM (Health Data Metrics) a Data Quality assesment
+      Application.
+    digest: 20a7b944392f4e1042592c17ccd1f89867f7d90003da634e1f7b9384d8c9c481
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/hdm
+    icon: https://i.ibb.co/fqWJSVV/logo-hdm.png
+    keywords:
+    - data
+    - quality
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: hdm
+    sources:
+    - https://github.com/curie-data-factory/health-data-metrics
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/hdm-2.3.10/hdm-2.3.10.tgz
+    version: 2.3.10
+  - apiVersion: v2
+    appVersion: 2.2.1
     created: "2021-04-06T08:54:01.850315937Z"
     dependencies:
     - name: elasticsearch
@@ -1037,4 +1069,4 @@ entries:
     urls:
     - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.6/redcap-1.9.6.tgz
     version: 1.9.6
-generated: "2021-04-06T08:54:02.059020238Z"
+generated: "2021-04-06T11:56:59.653039881Z"
