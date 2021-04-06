@@ -7,6 +7,33 @@ entries:
           image: doccano/doccano:1.2.2
     apiVersion: v2
     appVersion: 1.2.2
+    created: "2021-04-06T08:54:01.620889385Z"
+    description: A Helm chart for doccano, Open source text annotation tool for machine
+      learning practitioner.
+    digest: 3288f7d0a8655414f6d7274521674e1fbd8917dbfd68175fb6598eec7a2f8c86
+    home: https://doccano.herokuapp.com/
+    icon: https://raw.githubusercontent.com/doccano/doccano/master/docs/images/logo/doccano.png
+    keywords:
+    - annotation
+    - ml
+    - text
+    - machine-learning
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: doccano
+    sources:
+    - https://github.com/doccano/doccano
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/doccano-1.3.5/doccano-1.3.5.tgz
+    version: 1.3.5
+  - annotations:
+      artifacthub.io/images: |
+        - name: doccano
+          image: doccano/doccano:1.2.2
+    apiVersion: v2
+    appVersion: 1.2.2
     created: "2021-03-25T15:01:45.251011101Z"
     description: A Helm chart for doccano, Open source text annotation tool for machine
       learning practitioner.
@@ -143,6 +170,32 @@ entries:
           image: timoschwarzer/gitlab-monitor:latest
     apiVersion: v2
     appVersion: "1.7"
+    created: "2021-04-06T08:54:01.753613232Z"
+    description: A web-based monitor dashboard for GitLab CI
+    digest: 8a1a3b326a1dca5e92b8170ed23f1b9c1195a8ade752c0690f2f40d14e37b137
+    home: https://github.com/timoschwarzer/gitlab-monitor
+    icon: https://i.ibb.co/vVys3Yt/logo.png
+    keywords:
+    - dashboard
+    - devops
+    - gitlab
+    - git
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: gitlab-monitor
+    sources:
+    - https://github.com/timoschwarzer/gitlab-monitor
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/gitlab-monitor-1.2.10/gitlab-monitor-1.2.10.tgz
+    version: 1.2.10
+  - annotations:
+      artifacthub.io/images: |
+        - name: gitlab-monitor
+          image: timoschwarzer/gitlab-monitor:latest
+    apiVersion: v2
+    appVersion: "1.7"
     created: "2021-03-25T15:01:45.387690367Z"
     description: A web-based monitor dashboard for GitLab CI
     digest: 5a3d45e9f0b9569946c70d245cbb91e071dd36befa407b968cee8aa387b6fc74
@@ -268,6 +321,35 @@ entries:
     - https://github.com/curie-data-factory/helm-charts/releases/download/gitlab-monitor-1.2.5/gitlab-monitor-1.2.5.tgz
     version: 1.2.5
   hdm:
+  - apiVersion: v2
+    appVersion: 2.2.1
+    created: "2021-04-06T08:54:01.850315937Z"
+    dependencies:
+    - name: elasticsearch
+      repository: https://helm.elastic.co
+      version: 7.10.1
+    - name: kibana
+      repository: https://helm.elastic.co
+      version: 7.10.1
+    description: Helm chart for HDM (Health Data Metrics) a Data Quality assesment
+      Application.
+    digest: e0e6d3ef6a768d785a0281fe15694356f45f2aa5760a6b5677d2e2a724d29a9b
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/hdm
+    icon: https://i.ibb.co/fqWJSVV/logo-hdm.png
+    keywords:
+    - data
+    - quality
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: hdm
+    sources:
+    - https://github.com/curie-data-factory/health-data-metrics
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/hdm-2.3.9/hdm-2.3.9.tgz
+    version: 2.3.9
   - apiVersion: v2
     appVersion: 2.2.1
     created: "2021-03-26T16:36:38.455554602Z"
@@ -443,6 +525,31 @@ entries:
     - https://github.com/curie-data-factory/helm-charts/releases/download/hdm-2.3.2/hdm-2.3.2.tgz
     version: 2.3.2
   job-orchestrator:
+  - apiVersion: v2
+    appVersion: 1.3.2
+    created: "2021-04-06T08:54:01.977396925Z"
+    description: Helm Chart for Job Orchestrator, Help Manages jobs by connecting
+      Gitlab Runners / Nexus Ressources with Kubernetes.
+    digest: 9d1dd9965d203ac3aa6c98e10a07e2093d9f198986a2f7f816cb15849b994282
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/job-orchestrator
+    icon: https://i.ibb.co/2sGpDKj/favicon.png
+    keywords:
+    - kubernetes
+    - gitlab
+    - devops
+    - docker
+    - nexus
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: job-orchestrator
+    sources:
+    - https://github.com/curie-data-factory/job-orchestrator
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/job-orchestrator-1.9.13/job-orchestrator-1.9.13.tgz
+    version: 1.9.13
   - apiVersion: v2
     appVersion: 1.3.2
     created: "2021-03-26T16:36:41.618419598Z"
@@ -692,6 +799,28 @@ entries:
   redcap:
   - apiVersion: v2
     appVersion: 10.6.12
+    created: "2021-04-06T08:54:02.05886134Z"
+    description: Helm chart for RedCap, A CRF Application for survey research.
+    digest: 4f7517a186a6f4b54849ee25c0aa0e92c765cd21236c2f7aa61a8ae182d611af
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/redcap
+    icon: https://www.redcapbrasil.com.br/wp-content/uploads/2018/02/rbone.png
+    keywords:
+    - redcap
+    - crf
+    - research
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: redcap
+    sources:
+    - https://www.project-redcap.org/
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.17/redcap-1.9.17.tgz
+    version: 1.9.17
+  - apiVersion: v2
+    appVersion: 10.6.12
     created: "2021-03-25T15:01:45.836010613Z"
     description: Helm chart for RedCap, A CRF Application for survey research.
     digest: 08444777bed929b27e068fbb9da65314995a4f2e536cd2f74b1176a354286e58
@@ -908,4 +1037,4 @@ entries:
     urls:
     - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.6/redcap-1.9.6.tgz
     version: 1.9.6
-generated: "2021-03-26T16:36:41.618627903Z"
+generated: "2021-04-06T08:54:02.059020238Z"
