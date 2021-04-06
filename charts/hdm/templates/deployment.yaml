@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: "{{ .Release.Name }}-{{ .Values.image.name }}"
   labels:
+    app: "{{ .Release.Name }}-{{ .Values.image.name }}"
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     heritage: {{ .Release.Service }}
     release: {{ .Release.Name }}
@@ -87,4 +88,4 @@ spec:
           items:
           - key: version.json
             path: ./version.json
-          name: hdm-version
+          name: "{{ .Release.Name }}-version"

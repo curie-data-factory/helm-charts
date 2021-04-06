@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: "{{ .Release.Name }}-{{ .Values.image.name }}"
   labels:
+    app: "{{ .Release.Name }}-{{ .Values.image.name }}"
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     heritage: {{ .Release.Service }}
     release: {{ .Release.Name }}
