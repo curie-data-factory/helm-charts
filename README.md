@@ -1,19 +1,16 @@
-<p align="center">
-  <img width="75" height="77" src="https://curie.fr/themes/custom/curie/images/curie-logo.png">
-</p>
-
 # Curie Institute - Data Factory - Helm Charts Repository
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![](https://github.com/curie-data-factory/helm-charts/workflows/Release%20Charts/badge.svg?branch=master)](https://github.com//curie-data-factory/helm-charts/actions)
-[![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/curie-df-helm-charts)](https://artifacthub.io/packages/search?repo=curie-df-helm-charts)
+![https://curie.fr/themes/custom/curie/images/curie-logo.png](https://curie.fr/themes/custom/curie/images/curie-logo.png)
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![(https://github.com/curie-data-factory/helm-charts/workflows/Release%20Charts/badge.svg?branch=master)](https://github.com//curie-data-factory/helm-charts/actions)
+[![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/curie-df-helm-charts)](https://artifacthub.io/packages/search?repo=curie-df-helm-charts)
 
 Welcome to the Data Factory - Curie Institute's charts repository. All charts are in the charts directory.
 
 ## Adding the chart Repository
 
-```
+```bash
 helm repo add curiedfcharts https://curie-data-factory.github.io/helm-charts
 helm repo update
 ```
