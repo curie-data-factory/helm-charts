@@ -2,6 +2,8 @@
 
 [Redcap](https://www.project-redcap.org/) REDCap is a secure web application for building and managing online surveys and databases.
 
+This chart use a specific image definition available here : [https://github.com/curie-data-factory/redcap](https://github.com/curie-data-factory/redcap)
+
 ## Installing the Chart
 
 Before you can install the chart you will need to add the `curiedfcharts` repo to [Helm](https://helm.sh/).
