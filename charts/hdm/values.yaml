@@ -54,18 +54,6 @@ mysql:
     username: hdm
     password: password
 
-  # Init script
-  initdbScripts:
-    initscript.sql: |-
-      CREATE USER 'reader'@'%' IDENTIFIED BY '';
-      CREATE USER 'hdmssl'@'%' IDENTIFIED BY '' REQUIRE SSL;
-
-      GRANT ALL PRIVILEGES ON `hdm`.* TO 'hdm'@'%' WITH GRANT OPTION;
-      GRANT ALL PRIVILEGES ON `hdm`.* TO 'hdmssl'@'%' WITH GRANT OPTION;
-      GRANT SELECT, LOCK TABLES, SHOW VIEW, EVENT, TRIGGER  ON *.* TO 'reader'@'%';
-
-      FLUSH PRIVILEGES;
-
   primary:
     persistence:
       size: 20Gi
