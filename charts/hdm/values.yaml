@@ -67,9 +67,6 @@ mysql:
       FLUSH PRIVILEGES;
 
   primary:
-    service:
-      port: 3306
-
     persistence:
       size: 20Gi
 
