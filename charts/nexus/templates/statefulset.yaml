@@ -58,7 +58,7 @@ spec:
         {{- end }}
         volumeMounts:
         - mountPath: {{ .Values.dump.mountPath }}
-          name: {{ .Values.persistence.name }}
+          name: "{{ .Release.Name }}-blobs"
           readOnly: true
         - mountPath: /nfs
           name: nfs-dump
