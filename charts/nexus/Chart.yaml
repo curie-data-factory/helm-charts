@@ -3,7 +3,7 @@ name: nexus
 description: Sonatype Nexus is an open source repository manager
 type: application
 appVersion: "3.30.0"
-version: "1.0.1"
+version: "1.0.2"
 home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/nexus
 icon: https://help.sonatype.com/docs/files/331022/34537964/3/1564671303641/NexusRepo_Icon.png
 sources:
@@ -15,3 +15,7 @@ kubeVersion: ">= 1.14.0-0"
 keywords:
   - nexus
   - registry
+annotations:
+  artifacthub.io/images: |
+    - name: nexus
+      image: sonatype/nexus3:3.30.0
