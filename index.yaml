@@ -924,6 +924,28 @@ entries:
     urls:
     - https://github.com/curie-data-factory/helm-charts/releases/download/job-orchestrator-1.9.1/job-orchestrator-1.9.1.tgz
     version: 1.9.1
+  nexus:
+  - apiVersion: v2
+    appVersion: 3.30.0
+    created: "2021-04-15T11:40:13.412804537Z"
+    description: Sonatype Nexus is an open source repository manager
+    digest: 9f6df7a357aaeb955f90e232c7c551d81bc2cd217e83f3c836e3d73959c782a0
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/nexus
+    icon: https://help.sonatype.com/docs/files/331022/34537964/3/1564671303641/NexusRepo_Icon.png
+    keywords:
+    - nexus
+    - registry
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: nexus
+    sources:
+    - https://github.com/sonatype/nexus-public
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/nexus-1.0.0/nexus-1.0.0.tgz
+    version: 1.0.0
   redcap:
   - apiVersion: v2
     appVersion: 10.6.12
@@ -1187,4 +1209,4 @@ entries:
     urls:
     - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.6/redcap-1.9.6.tgz
     version: 1.9.6
-generated: "2021-04-12T14:32:32.173755561Z"
+generated: "2021-04-15T11:40:13.412998559Z"
