@@ -1,0 +1,39 @@
+image:
+  replicaCount: 1
+  repository: "sonatype/nexus3"
+  tag: "3.30.0"
+  pullPolicy: IfNotPresent
+  name: nexus
+  deployRegistry: false
+  imagePullSecrets: registrysecret
+  dataSecret: |-
+    {"auths":{"registry.company.com":{"password":"","username":""}}}
+
+service:
+  type: ClusterIP
+
+ingress:
+  urldockerrelease: nexus-release.company.com
+  urldockerreleasename: nexus-release
+  urldockersnapshot: nexus-snapshot.company.com
+  urldockersnapshotname: nexus-snapshot
+  enabled: true
+  url: nexus.company.com
+  tls:
+  - hosts:
+    - nexus.company.com
+    secretName: nexus
+
+  annotations:
+    nginx.ingress.kubernetes.io/client_max_body_size: 5000m
+    nginx.ingress.kubernetes.io/proxy-body-size: 5000m
+
+## Persist data to a persistent volume
+persistence:
+  enabled: true
+  size: 
+    blobs: 10Gi
+    db: 10Gi
+
+dump:
+  enabled: false
