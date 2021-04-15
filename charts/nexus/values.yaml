@@ -35,5 +35,8 @@ persistence:
     blobs: 10Gi
     db: 10Gi
 
+  annotations:
+    helm.sh/resource-policy: keep
+
 dump:
   enabled: false
