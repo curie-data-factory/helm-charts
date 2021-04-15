@@ -19,6 +19,7 @@ ingress:
   urldockersnapshotname: nexus-snapshot
   enabled: true
   url: nexus.company.com
+
   tls:
   - hosts:
     - nexus.company.com
@@ -31,6 +32,7 @@ ingress:
 ## Persist data to a persistent volume
 persistence:
   enabled: true
+  accessMode: "ReadWriteOnce"
   size:
     blobs: 10Gi
     db: 10Gi

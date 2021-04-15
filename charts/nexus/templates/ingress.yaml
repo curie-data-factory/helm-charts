@@ -7,33 +7,6 @@ metadata:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     heritage: {{ .Release.Service }}
     release: {{ .Release.Name }}
-  name: {{ .Values.image.name }}
-{{- with .Values.ingress.annotations  }}
-  annotations:
-{{ toYaml . | indent 4 }}
-{{- end }}
-spec:
-  rules:
-    - host: "{{ .Values.ingress.url }}"
-      http:
-        paths:
-          - path: /
-            backend:
-              serviceName: "{{ .Release.Name }}-{{ .Values.image.name }}"
-              servicePort: 8081
-  {{- if .Values.ingress.tls }}
-  tls:
-{{ toYaml .Values.ingress.tls | indent 4 }}
-  {{- end -}}
----
-apiVersion: networking.k8s.io/v1beta1
-kind: Ingress
-metadata:
-  labels:
-    app: {{ .Values.image.name }}
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    heritage: {{ .Release.Service }}
-    release: {{ .Release.Name }}
   name: "{{ .Values.image.name }}-docker-release"
 {{- with .Values.ingress.annotations  }}
   annotations:
@@ -79,4 +52,31 @@ spec:
   - hosts:
     - {{ .Values.ingress.urldockersnapshot }}
     secretName: {{ .Values.ingress.urldockersnapshotname }}
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  labels:
+    app: {{ .Values.image.name }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+  name: "{{ .Release.Name }}-{{ .Values.image.name }}"
+{{- with .Values.ingress.annotations  }}
+  annotations:
+{{ toYaml . | indent 4 }}
+{{- end }}
+spec:
+  rules:
+    - host: "{{ .Values.ingress.url }}"
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: "{{ .Release.Name }}-{{ .Values.image.name }}"
+              servicePort: 8081
+  {{- if .Values.ingress.tls }}
+  tls:
+{{ toYaml .Values.ingress.tls | indent 4 }}
+  {{- end -}}
 {{- end -}}
