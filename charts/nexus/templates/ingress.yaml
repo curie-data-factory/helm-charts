@@ -19,7 +19,7 @@ spec:
         paths:
           - path: /
             backend:
-              serviceName: {{ .Release.Name }}
+              serviceName: "{{ .Release.Name }}-{{ .Values.image.name }}"
               servicePort: 8081
   {{- if .Values.ingress.tls }}
   tls:
@@ -46,7 +46,7 @@ spec:
         paths:
           - path: /
             backend:
-              serviceName: {{ .Release.Name }}
+              serviceName: "{{ .Release.Name }}-{{ .Values.image.name }}"
               servicePort: 8083
   tls:
   - hosts:
@@ -73,7 +73,7 @@ spec:
         paths:
           - path: /
             backend:
-              serviceName: {{ .Release.Name }}
+              serviceName: "{{ .Release.Name }}-{{ .Values.image.name }}"
               servicePort: 8082
   tls:
   - hosts:
