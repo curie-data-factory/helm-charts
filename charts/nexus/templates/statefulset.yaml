@@ -57,8 +57,8 @@ spec:
 {{ toYaml . | indent 8 }}
         {{- end }}
         volumeMounts:
-        - mountPath: {{ .Values.dump.mountPath }}
-          name: {{ .Values.persistence.name }}
+        - mountPath: "{{ .Release.Name }}-blobs"
+          name: "{{ .Release.Name }}-blobs"
           readOnly: true
         - mountPath: /nfs
           name: nfs-dump
