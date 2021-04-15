@@ -1,0 +1,97 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: "{{ .Release.Name }}-{{ .Values.image.name }}"
+  labels:
+    app: "{{ .Release.Name }}-{{ .Values.image.name }}"
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+{{ include "nexus.labels" . | indent 4 }}
+spec:
+  serviceName: {{ .Values.image.name }}-statefulset
+  replicas: {{ .Values.image.replicaCount }}
+  selector:
+    matchLabels:
+      app: "{{ .Release.Name }}-{{ .Values.image.name }}"
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: "{{ .Release.Name }}-{{ .Values.image.name }}"
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+      - env:
+        - name: INSTALL4J_ADD_VM_PARAMS
+          value: -Xms10g -Xmx10g -XX:MaxDirectMemorySize=10g -XX:-MaxFDLimit
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: {{ .Values.image.name }}
+        ports:
+        - containerPort: 8081
+          name: http
+          protocol: TCP
+        - containerPort: 8082
+          name: dockersnapshot
+          protocol: TCP
+        - containerPort: 8083
+          name: dockerrelease
+          protocol: TCP
+        resources:
+          requests:
+            cpu: "4"
+        volumeMounts:
+        - mountPath: /nexus-data/blobs
+          name: "{{ .Release.Name }}-blobs"
+        - mountPath: /nexus-data/db
+          name: "{{ .Release.Name }}-dbs-data"
+        - mountPath: /nexus-data/restore-from-backup
+          name: "{{ .Release.Name }}-db-restore"
+      {{- if .Values.dump.enabled }}
+      - name: {{ .Chart.Name }}-dump
+        image: {{ .Values.dump.image }}
+        imagePullPolicy: Always
+        {{- with .Values.dump.env }}
+        env:
+{{ toYaml . | indent 8 }}
+        {{- end }}
+        volumeMounts:
+        - mountPath: {{ .Values.dump.mountPath }}
+          name: {{ .Values.persistence.name }}
+          readOnly: true
+        - mountPath: /nfs
+          name: nfs-dump
+      {{- end }}
+      initContainers:
+      - args:
+        - chown
+        - -R
+        - "200"
+        - /data
+        image: busybox
+        name: chmod
+        volumeMounts:
+        - mountPath: /data/blobs
+          name: "{{ .Release.Name }}-blobs"
+        - mountPath: /data/db
+          name: "{{ .Release.Name }}-dbs-data"
+      volumes:
+      - name: "{{ .Release.Name }}-blobs"
+        persistentVolumeClaim:
+          claimName: "{{ .Release.Name }}-blobs"
+      - name: "{{ .Release.Name }}-dbs-data"
+        persistentVolumeClaim:
+          claimName: "{{ .Release.Name }}-dbs-data"
+      - name: "{{ .Release.Name }}-db-restore"
+        persistentVolumeClaim:
+          claimName: "{{ .Release.Name }}-db-restore"
+      {{- if .Values.dump.enabled }}
+      - hostPath:
+          path: {{ .Values.dump.nfsPath }}
+        name: nfs-dump
+      {{- end }}
+      {{- if .Values.image.deployRegistry }}
+      imagePullSecrets:
+      - name: "{{ .Values.image.name }}-{{ .Values.image.imagePullSecrets }}"
+      {{- end }}
