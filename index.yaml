@@ -931,6 +931,31 @@ entries:
           image: sonatype/nexus3:3.30.0
     apiVersion: v2
     appVersion: 3.30.0
+    created: "2021-04-15T12:14:27.749542508Z"
+    description: Sonatype Nexus is an open source repository manager
+    digest: 3c13dd7fbc05194a1b9238a1db4ebc23b02a5510610ba5e01f03a35f363a46ff
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/nexus
+    icon: https://help.sonatype.com/docs/files/331022/34537964/3/1564671303641/NexusRepo_Icon.png
+    keywords:
+    - nexus
+    - registry
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: nexus
+    sources:
+    - https://github.com/sonatype/nexus-public
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/nexus-1.0.3/nexus-1.0.3.tgz
+    version: 1.0.3
+  - annotations:
+      artifacthub.io/images: |
+        - name: nexus
+          image: sonatype/nexus3:3.30.0
+    apiVersion: v2
+    appVersion: 3.30.0
     created: "2021-04-15T12:08:59.64529463Z"
     description: Sonatype Nexus is an open source repository manager
     digest: 1054861f6f86064206bf7f2d2cf166bbf1a58a4aacc280e2b1e4f3de71dd5b3f
@@ -1255,4 +1280,4 @@ entries:
     urls:
     - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.6/redcap-1.9.6.tgz
     version: 1.9.6
-generated: "2021-04-15T12:08:59.645433729Z"
+generated: "2021-04-15T12:14:27.749687509Z"
