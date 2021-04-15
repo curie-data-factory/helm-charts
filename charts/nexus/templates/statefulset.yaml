@@ -68,7 +68,7 @@ spec:
         - chown
         - -R
         - "200"
-        - /data 
+        - /data
         image: busybox
         name: chmod
         volumeMounts:

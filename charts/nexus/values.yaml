@@ -31,7 +31,7 @@ ingress:
 ## Persist data to a persistent volume
 persistence:
   enabled: true
-  size: 
+  size:
     blobs: 10Gi
     db: 10Gi
 
