@@ -1,5 +1,26 @@
 # HDM
 
+The main goal of HDM is to help asses data quality by running ad-hoc programs that "scan" databases regularly to compute metrics & calculate divergence wether in structure or content of databases. Generating alerts that gives Data Engineers insights on what broke down.
+
+To get more informations :
+
+* [Github Source Code](https://github.com/curie-data-factory/health-data-metrics)
+
+## Installing the Chart
+
+Before you can install the chart you will need to add the `curiedfcharts` repo to [Helm](https://helm.sh/).
+
+```shell
+helm repo add curiedfcharts https://curie-data-factory.github.io/helm-charts
+helm repo update
+```
+
+After you've installed the repo you can install the chart.
+
+```shell
+helm upgrade --install --namespace default --values ./my-values.yaml my-release curiedfcharts/hdm
+```
+
 ## Configuration
 
 The following table lists the configurable parameters of the chart and their default values.
