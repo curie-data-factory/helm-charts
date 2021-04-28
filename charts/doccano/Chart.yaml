@@ -1,7 +1,7 @@
 apiVersion: v2
 name: doccano
 appVersion: 1.2.2
-version: 1.3.6
+version: 1.3.7
 description: A Helm chart for doccano, Open source text annotation tool for machine learning practitioner.
 home: https://doccano.herokuapp.com/
 icon: https://raw.githubusercontent.com/doccano/doccano/master/docs/images/logo/doccano.png
