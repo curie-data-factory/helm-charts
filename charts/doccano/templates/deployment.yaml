@@ -46,9 +46,20 @@ spec:
         volumeMounts:
         - mountPath: {{ .Values.persistence.mountPath }}
           name: {{ .Values.persistence.volumeName }}
-      {{- if .Values.image.deployRegistry }}
-      imagePullSecrets:
-      - name: "{{ .Values.image.name }}-{{ .Values.image.imagePullSecrets }}"
+      {{- if .Values.dump.enabled }}
+      - name: {{ .Chart.Name }}-dump
+        image: {{ .Values.dump.image }}
+        imagePullPolicy: Always
+        {{- with .Values.dump.env }}
+        env:
+{{ toYaml . | indent 8 }}
+        {{- end }}
+        volumeMounts:
+        - mountPath: {{ .Values.dump.mountPath }}
+          name: {{ .Values.persistence.volumeName }}
+          readOnly: true
+        - mountPath: /nfs
+          name: nfs-dump
       {{- end }}
       initContainers:
       - args:
@@ -65,3 +76,12 @@ spec:
       - name: {{ .Values.persistence.volumeName }}
         persistentVolumeClaim:
           claimName: "{{ .Release.Name }}-{{ .Values.persistence.volumeName }}"
+      {{- if .Values.dump.enabled }}
+      - hostPath:
+          path: {{ .Values.dump.nfsPath }}
+        name: nfs-dump
+      {{- end }}
+      {{- if .Values.image.deployRegistry }}
+      imagePullSecrets:
+      - name: "{{ .Values.image.name }}-{{ .Values.image.imagePullSecrets }}"
+      {{- end }}
