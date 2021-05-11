@@ -44,3 +44,10 @@ dump:
   enabled: false
 
 nodeSelector: {}
+
+resources:
+  requests:
+    cpu: "4"
+
+## Refer to https://help.sonatype.com/repomanager3/installation/system-requirements#SystemRequirements-ExampleMaximumMemoryConfigurations for value
+containerJVMParam: "-Xms10g -Xmx10g -XX:MaxDirectMemorySize=10g -XX:-MaxFDLimit"
