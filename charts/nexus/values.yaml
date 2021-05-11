@@ -42,3 +42,5 @@ persistence:
 
 dump:
   enabled: false
+
+nodeSelector: {}
