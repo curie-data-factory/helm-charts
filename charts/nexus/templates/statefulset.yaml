@@ -24,7 +24,7 @@ spec:
       containers:
       - env:
         - name: INSTALL4J_ADD_VM_PARAMS
-          value: -Xms10g -Xmx10g -XX:MaxDirectMemorySize=10g -XX:-MaxFDLimit
+          value: {{ .Values.containerJVMParam }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: {{ .Values.image.name }}
@@ -39,8 +39,7 @@ spec:
           name: dockerrelease
           protocol: TCP
         resources:
-          requests:
-            cpu: "4"
+{{- toYaml .Values.resources | nindent 12 }}         
         volumeMounts:
         - mountPath: /nexus-data/blobs
           name: "{{ .Release.Name }}-blobs"
