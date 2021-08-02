@@ -2,8 +2,8 @@ apiVersion: v2
 name: hdm
 description: Helm chart for HDM (Health Data Metrics) a Data Quality assesment Application.
 type: application
-appVersion: 2.2.1
-version: 2.3.14
+appVersion: 2.2.2
+version: 2.3.15
 home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/hdm
 icon: https://i.ibb.co/fqWJSVV/logo-hdm.png
 sources:
@@ -25,3 +25,7 @@ dependencies:
   - name: kibana
     repository: https://helm.elastic.co
     version: 7.10.1
+annotations:
+  artifacthub.io/images: |
+    - name: hdm
+      image: ghcr.io/curie-data-factory/hdm:2.2.2
