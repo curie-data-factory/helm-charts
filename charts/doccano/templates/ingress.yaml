@@ -21,11 +21,12 @@ spec:
 {{ toYaml .Values.ingress.tls | indent 4 }}
 {{- end }}
   rules:
+{{- $path := .Values.ingress.path -}}
 {{- range .Values.ingress.hostnames }}
   - host: "{{ . }}"
     http:
       paths:
-        - path: /
+        - path: {{ $path }}
           backend:
             serviceName: {{ $serviceName }}
             servicePort: {{ $servicePort }}

@@ -23,6 +23,7 @@ service:
 
 ingress:
   enabled: true
+  path: /
   hostnames:
   - doccano.company.com
   tls:

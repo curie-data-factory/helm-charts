@@ -45,6 +45,7 @@ The following table lists the configurable parameters of the chart and their def
 | `service.protocol`               | Service Protocol                                                     | `TCP`                                                               |
 | `ingress.enabled`                | Expose application with ingress                                      | `true`                                                              |
 | `ingress.hostnames`              | Urls of exposed application                                          | `['doccano.company.com']`                                           |
+| `ingress.path`                   | Path through ingress                                                 | `/`                                           |
 | `ingress.tls`                    | Array of TLS Hosts                                                   | `[]`                                                                |
 | `ingress.tls[hosts]`             | Host name                                                            | `['doccano.company.com']`                                           |
 | `ingress.tls[hosts[secretName]]` | Secret for the current host name                                     | `doccano`                                                           |
