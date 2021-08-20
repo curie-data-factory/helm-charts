@@ -38,6 +38,10 @@ confAppli:
   data: |
     ""
 
+confMail:
+  key: "msmtprc"
+  data: |
+    ""
 createTable:
   key: "create_tables.sql"
   data: |

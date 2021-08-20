@@ -51,6 +51,8 @@ spec:
           name: hdm-conf-db
         - mountPath: /var/www/html/conf/ldap/
           name: hdm-conf-ldap
+        - mountPath: /var/www/html/conf/mail/
+          name: hdm-conf-mail
         - mountPath: /var/www/html/version/
           name: hdm-version
       {{- if .Values.image.deployRegistry }}
@@ -82,6 +84,13 @@ spec:
           - key: {{ .Values.confLdap.key }}
             path: ./{{ .Values.confLdap.key }}
           secretName: hdm-conf-ldap
+      - name: hdm-conf-mail
+        secret:
+          defaultMode: 0777
+          items:
+          - key: {{ .Values.confMail.key }}
+            path: ./{{ .Values.confMail.key }}
+          secretName: hdm-conf-mail
       - name: hdm-version
         configMap:
           defaultMode: 0777
