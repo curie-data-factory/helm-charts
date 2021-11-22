@@ -28,4 +28,4 @@ dependencies:
 annotations:
   artifacthub.io/images: |
     - name: hdm
-      image: ghcr.io/curie-data-factory/hdm:2.2.2
+      image: ghcr.io/curie-data-factory/hdm:2.2.5
