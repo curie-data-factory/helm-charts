@@ -52,7 +52,7 @@ resources:
 ## Refer to https://help.sonatype.com/repomanager3/installation/system-requirements#SystemRequirements-ExampleMaximumMemoryConfigurations for value
 containerJVMParam: "-Xms10g -Xmx10g -XX:MaxDirectMemorySize=10g -XX:-MaxFDLimit"
 
-# This environment variable allows you to specify the initialization of tools, 
+# This environment variable allows you to specify the initialization of tools,
 # specifically the launching of native or Java programming language agents using the -agentlib or -javaagent options.
 # https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/envvars002.html
 java_tool_options: ""
