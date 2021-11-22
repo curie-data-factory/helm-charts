@@ -1,7 +1,7 @@
 image:
   replicaCount: 1
   repository: ghcr.io/curie-data-factory/hdm
-  tag: "2.2.5"
+  tag: "2.3.0"
   pullPolicy: IfNotPresent
   name: hdm
   deployRegistry: false
@@ -61,6 +61,10 @@ mysql:
   primary:
     persistence:
       size: 20Gi
+
+    configuration: |-
+      [mysqld]
+      binlog_expire_logs_seconds=604800‬
 
 ################################################################################
 ## Kibana
