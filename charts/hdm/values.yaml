@@ -64,7 +64,7 @@ mysql:
 
     configuration: |-
       [mysqld]
-      binlog_expire_logs_seconds=604800‬
+      skip-log-bin
 
 ################################################################################
 ## Kibana
