@@ -1,7 +1,7 @@
 image:
   replicaCount: 1
   repository: ghcr.io/curie-data-factory/hdm
-  tag: "2.2.4"
+  tag: "2.3.0"
   pullPolicy: IfNotPresent
   name: hdm
   deployRegistry: false
