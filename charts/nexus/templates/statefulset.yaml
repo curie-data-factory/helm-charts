@@ -25,6 +25,8 @@ spec:
       - env:
         - name: INSTALL4J_ADD_VM_PARAMS
           value: {{ .Values.containerJVMParam }}
+        - name: JAVA_TOOL_OPTIONS
+          value: {{ .Values.java_tool_options}}          
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: {{ .Values.image.name }}

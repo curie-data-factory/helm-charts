@@ -2,8 +2,8 @@ apiVersion: v2
 name: nexus
 description: Sonatype Nexus is an open source repository manager
 type: application
-appVersion: "3.30.0"
-version: "1.0.7"
+appVersion: "3.36.0"
+version: "1.1.0"
 home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/nexus
 icon: https://help.sonatype.com/docs/files/331022/34537964/3/1564671303641/NexusRepo_Icon.png
 sources:
