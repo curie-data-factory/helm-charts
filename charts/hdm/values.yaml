@@ -62,6 +62,10 @@ mysql:
     persistence:
       size: 20Gi
 
+    configuration: |-
+      [mysqld]
+      binlog_expire_logs_seconds=604800‬
+
 ################################################################################
 ## Kibana
 
