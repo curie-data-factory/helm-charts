@@ -275,6 +275,32 @@ entries:
   - annotations:
       artifacthub.io/images: |
         - name: gitlab-monitor
+          image: ghcr.io/timoschwarzer/gitlab-monitor:latest
+    apiVersion: v2
+    appVersion: "1.7"
+    created: "2022-03-21T14:01:11.917026635Z"
+    description: A web-based monitor dashboard for GitLab CI
+    digest: 5309546ce2f28b3bd3177a36a211de9755154f1cc935c64fa84ac907e881caaa
+    home: https://github.com/timoschwarzer/gitlab-monitor
+    icon: https://i.ibb.co/vVys3Yt/logo.png
+    keywords:
+    - dashboard
+    - devops
+    - gitlab
+    - git
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: gitlab-monitor
+    sources:
+    - https://github.com/timoschwarzer/gitlab-monitor
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/gitlab-monitor-1.3.0/gitlab-monitor-1.3.0.tgz
+    version: 1.3.0
+  - annotations:
+      artifacthub.io/images: |
+        - name: gitlab-monitor
           image: timoschwarzer/gitlab-monitor:latest
     apiVersion: v2
     appVersion: "1.7"
@@ -429,6 +455,42 @@ entries:
     - https://github.com/curie-data-factory/helm-charts/releases/download/gitlab-monitor-1.2.5/gitlab-monitor-1.2.5.tgz
     version: 1.2.5
   hdm:
+  - annotations:
+      artifacthub.io/images: |
+        - name: hdm
+          image: ghcr.io/curie-data-factory/hdm:2.3.0
+    apiVersion: v2
+    appVersion: 2.3.0
+    created: "2022-03-21T14:00:46.746058076Z"
+    dependencies:
+    - name: mysql
+      repository: https://charts.bitnami.com/bitnami
+      version: 8.5.1
+    - name: elasticsearch
+      repository: https://helm.elastic.co
+      version: 7.16.1
+    - name: kibana
+      repository: https://helm.elastic.co
+      version: 7.16.1
+    description: Helm chart for HDM (Health Data Metrics) a Data Quality assesment
+      Application.
+    digest: f508e51c2b54d1e7d6f58860bd4c1412adebf7424c9d878839dd3c7f6544c3e9
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/hdm
+    icon: https://i.ibb.co/fqWJSVV/logo-hdm.png
+    keywords:
+    - data
+    - quality
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: hdm
+    sources:
+    - https://github.com/curie-data-factory/health-data-metrics
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/hdm-2.4.2/hdm-2.4.2.tgz
+    version: 2.4.2
   - annotations:
       artifacthub.io/images: |
         - name: hdm
@@ -1048,6 +1110,64 @@ entries:
   - annotations:
       artifacthub.io/images: |
         - name: job-orchestrator
+          image: ghcr.io/curie-data-factory/job-orchestrator:1.3.3
+    apiVersion: v2
+    appVersion: 1.3.3
+    created: "2022-03-21T14:01:06.763369742Z"
+    description: Helm Chart for Job Orchestrator, Help Manages jobs by connecting
+      Gitlab Runners / Nexus Ressources with Kubernetes.
+    digest: f13391700495b38d1484ec83be176c0611d998c3c57fa4bdfb9632e8dfdc2a68
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/job-orchestrator
+    icon: https://i.ibb.co/2sGpDKj/favicon.png
+    keywords:
+    - kubernetes
+    - gitlab
+    - devops
+    - docker
+    - nexus
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: job-orchestrator
+    sources:
+    - https://github.com/curie-data-factory/job-orchestrator
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/job-orchestrator-1.10.0/job-orchestrator-1.10.0.tgz
+    version: 1.10.0
+  - annotations:
+      artifacthub.io/images: |
+        - name: job-orchestrator
+          image: ghcr.io/curie-data-factory/job-orchestrator:1.3.3
+    apiVersion: v2
+    appVersion: 1.3.3
+    created: "2022-03-21T14:01:06.763369742Z"
+    description: Helm Chart for Job Orchestrator, Help Manages jobs by connecting
+      Gitlab Runners / Nexus Ressources with Kubernetes.
+    digest: f13391700495b38d1484ec83be176c0611d998c3c57fa4bdfb9632e8dfdc2a68
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/job-orchestrator
+    icon: https://i.ibb.co/2sGpDKj/favicon.png
+    keywords:
+    - kubernetes
+    - gitlab
+    - devops
+    - docker
+    - nexus
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: job-orchestrator
+    sources:
+    - https://github.com/curie-data-factory/job-orchestrator
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/job-orchestrator-1.10.0/job-orchestrator-1.10.0.tgz
+    version: 1.10.0
+  - annotations:
+      artifacthub.io/images: |
+        - name: job-orchestrator
           image: ghcr.io/curie-data-factory/job-orchestrator:latest
     apiVersion: v2
     appVersion: 1.3.2
@@ -1346,6 +1466,31 @@ entries:
     - https://github.com/curie-data-factory/helm-charts/releases/download/job-orchestrator-1.9.1/job-orchestrator-1.9.1.tgz
     version: 1.9.1
   nexus:
+  - annotations:
+      artifacthub.io/images: |
+        - name: nexus
+          image: sonatype/nexus3:3.38.0
+    apiVersion: v2
+    appVersion: 3.38.0
+    created: "2022-03-21T14:00:52.915987324Z"
+    description: Sonatype Nexus is an open source repository manager
+    digest: 2744ff02f852dd6fc4a7bfb9cbfacd188d92e605188a37cf5a4ff2c298deb165
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/nexus
+    icon: https://help.sonatype.com/docs/files/331022/34537964/3/1564671303641/NexusRepo_Icon.png
+    keywords:
+    - nexus
+    - registry
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: nexus
+    sources:
+    - https://github.com/sonatype/nexus-public
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/nexus-1.2.0/nexus-1.2.0.tgz
+    version: 1.2.0
   - annotations:
       artifacthub.io/images: |
         - name: nexus
