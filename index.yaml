@@ -1,5 +1,31 @@
 apiVersion: v1
 entries:
+  bookstack:
+  - annotations:
+      artifacthub.io/images: |
+        - name: bookstack
+          image: lscr.io/linuxserver/bookstack:21.12.4
+    apiVersion: v2
+    appVersion: 21.12.4
+    created: "2022-03-21T15:41:29.832171437Z"
+    dependencies:
+    - name: mysql
+      repository: https://charts.bitnami.com/bitnami
+      version: 8.5.1
+    description: bookstack documentation platform
+    digest: f99cd246ff1250cf00b36fc4e1298e5023245c13a36075a9a423c210cb2b187c
+    home: https://www.bookstackapp.com/
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/BookStack_logo.svg/225px-BookStack_logo.svg.png
+    keywords:
+    - documentation
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: bookstack
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/bookstack-0.1.0/bookstack-0.1.0.tgz
+    version: 0.1.0
   doccano:
   - annotations:
       artifacthub.io/images: |
@@ -2019,4 +2045,4 @@ entries:
     urls:
     - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.6/redcap-1.9.6.tgz
     version: 1.9.6
-generated: "2022-03-21T15:37:49.77258714Z"
+generated: "2022-03-21T15:41:29.833271918Z"
