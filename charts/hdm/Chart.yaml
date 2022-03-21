@@ -21,10 +21,10 @@ dependencies:
     version: 8.5.1
   - name: elasticsearch
     repository: https://helm.elastic.co
-    version: 7.10.1
+    version: 7.16.1
   - name: kibana
     repository: https://helm.elastic.co
-    version: 7.10.1
+    version: 7.16.1
 annotations:
   artifacthub.io/images: |
     - name: hdm
