@@ -1,0 +1,38 @@
+{{- if .Values.bookstack.ingress.enabled -}}
+{{- $serviceName  :=  print .Release.Name "-" .Values.bookstack.image.name }}
+{{- $servicePort := print .Values.bookstack.service.targetPort .Values.bookstack.service.protocol | lower -}}
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Values.bookstack.image.name }}
+  labels:
+    app: {{ .Values.bookstack.image.name  }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+{{- if .Values.bookstack.ingress.annotations }}
+  annotations:
+{{ toYaml .Values.bookstack.ingress.annotations | indent 4 }}
+{{- end }}
+spec:
+  tls:
+  - hosts:
+{{- range .Values.bookstack.ingress.hostnames }}
+    - "{{ . }}"
+{{- end }}
+    secretName: "{{ .Release.Name }}-cert-tls"
+  rules:
+{{- range .Values.bookstack.ingress.hostnames }}
+  - host: "{{ . }}"
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: {{ $serviceName }}
+              port:
+                name: {{ $servicePort }}
+{{- end }}
+{{- end -}}

@@ -1,0 +1,21 @@
+apiVersion: v2
+name: bookstack
+description: bookstack documentation platform
+appVersion: "21.12.4"
+version: "0.1.0"
+home: https://www.bookstackapp.com/
+icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/BookStack_logo.svg/225px-BookStack_logo.svg.png
+maintainers:
+- name: armandleopold
+  email: armand.leopold@curie.fr
+dependencies:
+  - name: mysql
+    repository: https://charts.bitnami.com/bitnami
+    version: 8.5.1
+kubeVersion: ">= 1.14.0-0"
+keywords:
+  - documentation
+annotations:
+  artifacthub.io/images: |
+    - name: bookstack
+      image: lscr.io/linuxserver/bookstack:21.12.4

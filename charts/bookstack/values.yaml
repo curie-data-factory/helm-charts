@@ -1,0 +1,75 @@
+tls:
+  cert: |-
+    ""
+  key: |-
+    ""
+
+mysql:
+  image:
+    tag: 8.0.18-r70
+
+  auth: 
+    rootPassword: rootpassword
+    database: bookstackapp
+    username: bookstack
+    password: password
+
+  primary:
+    persistence:
+      enabled: true
+      size: 20Gi
+
+bookstack:
+  image:
+    replicaCount: 1
+    repository: lscr.io/linuxserver/bookstack
+    tag: "21.12.4"
+    pullPolicy: IfNotPresent
+    name: bookstack
+    deployRegistry: true
+
+  env:
+  - name: PUID
+    value: "1000"
+  - name: PGID
+    value: "1000"
+  - name: APP_URL
+    value: "https://bookstack.compagny.com"
+  - name: DB_USER
+    value: "bookstack"
+  - name: DB_PASS
+    value: "password"
+  - name: DB_DATABASE
+    value: "bookstackapp"
+  - name: "TZ"
+    value: "Europe/Paris"
+  - name: FILE_UPLOAD_SIZE_LIMIT
+    value: "50"
+
+  service:
+    type: ClusterIP
+    targetPort: 80
+    protocol: TCP
+
+  ingress:
+    enabled: true
+    hostnames:
+    - bookstack.compagny.com
+
+    annotations:
+      nginx.ingress.kubernetes.io/client_max_body_size: "5000m"
+      nginx.ingress.kubernetes.io/proxy-body-size: "5000m"
+      nginx.ingress.kubernetes.io/client-body-timeout: "3600"
+      nginx.ingress.kubernetes.io/client-header-timeout: "3600"
+      nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+      nginx.ingress.kubernetes.io/affinity: "cookie"
+      nginx.ingress.kubernetes.io/session-cookie-expires: "86400"
+      nginx.ingress.kubernetes.io/session-cookie-max-age: "86400"
+      
+## Persist data to a persistent volume
+persistence:
+  enabled: true
+  size: 50Gi
+  accessMode: "ReadWriteOnce"
+  replicas: "1"
+  mountPath: /config
