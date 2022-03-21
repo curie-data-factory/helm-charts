@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: {{ .Release.Name }}-jupyter-{{ .Values.user }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+  name: "{{ .Release.Name }}"
+  namespace: {{ .Release.Namespace }}
+spec:
+  serviceName: "{{ .Release.Name }}"
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: "{{ .Release.Name }}"
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: "{{ .Release.Name }}"
+        release: {{ .Release.Name }}
+        app.kubernetes.io/name: {{ .Values.user }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        rollme: {{ randAlphaNum 5 | quote }}
+    spec:
+      containers:
+      - env:
+        {{- if .Values.gpu.enabled }}
+        - name: CUDA_VISIBLE_DEVICES
+          value: 0,1
+        - name: LD_LIBRARY_PATH
+          value: /usr/local/cuda/extras/CUPTI/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/usr/local/cuda/lib64
+        - name: NVIDIA_DRIVER_CAPABILITIES
+          value: all
+        - name: NVIDIA_VISIBLE_DEVICES
+          value: all
+        {{- end }}
+        image: {{ .Values.image.repository }}:{{ .Values.user }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: {{ .Release.Name }}-jupyter-{{ .Values.user }}
+        {{- if .Values.gpu.enabled }}
+        resources:
+          limits:
+            nvidia.com/gpu: "1"
+          requests:
+            nvidia.com/gpu: "1"
+        args:
+        - bash
+        - -c
+        - 'source /etc/bash.bashrc && cp -r /tf/.ssh /tf 2>/dev/null || : && jupyter lab --notebook-dir=/tf --ip 0.0.0.0 --no-browser --allow-root 
+          --allow-root'
+        {{- else }}
+        args:
+        - /bin/bash
+        - -c
+        - 'cp -r /home/jovyan/work/.ssh /home/jovyan/ 2>/dev/null || : && jupyter lab --notebook-dir=/home/jovyan/work --ip 0.0.0.0 --no-browser --allow-root'
+        {{- end }}
+        ports:
+        - containerPort: {{ .Values.service.targetPort }}
+          name: {{ .Values.service.targetPort }}{{ .Values.service.protocol | lower }}
+          protocol: {{ .Values.service.protocol }}
+        resources:
+          requests:
+            cpu: "1"
+            memory: 1000Mi
+        {{- if .Values.resources.enabled }}          
+          limits:
+            cpu: "{{ .Values.resources.cpu }}"
+            memory: {{ .Values.resources.memory }}
+        {{- end }}            
+        volumeMounts:
+        {{- if .Values.gpu.enabled }}
+        - mountPath: "/tf"
+          name: "{{ .Release.Name }}-{{ .Values.user }}-data"
+        {{- else }}
+        - mountPath: {{ .Values.persistence.mountPath }}
+          name: "{{ .Release.Name }}-{{ .Values.user }}-data"
+        {{- end }}
+      volumes:
+      - name: "{{ .Release.Name }}-{{ .Values.user }}-data"
+        persistentVolumeClaim:
+          claimName: "{{ .Release.Name }}-{{ .Values.user }}-data"
