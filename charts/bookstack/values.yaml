@@ -65,7 +65,7 @@ bookstack:
       nginx.ingress.kubernetes.io/affinity: "cookie"
       nginx.ingress.kubernetes.io/session-cookie-expires: "86400"
       nginx.ingress.kubernetes.io/session-cookie-max-age: "86400"
-      
+
 ## Persist data to a persistent volume
 persistence:
   enabled: true
