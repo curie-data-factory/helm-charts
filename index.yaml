@@ -4,33 +4,6 @@ entries:
   - annotations:
       artifacthub.io/images: |
         - name: doccano
-          image: doccano/doccano:1.6.2
-    apiVersion: v2
-    appVersion: 1.6.2
-    created: "2022-03-21T14:00:52.782730401Z"
-    description: A Helm chart for doccano, Open source text annotation tool for machine
-      learning practitioner.
-    digest: 8cdac9862b345e17f1872918a50620705d661c0d7e38795240058e80e7a03119
-    home: https://doccano.herokuapp.com/
-    icon: https://raw.githubusercontent.com/doccano/doccano/master/docs/images/logo/doccano.png
-    keywords:
-    - annotation
-    - ml
-    - text
-    - machine-learning
-    kubeVersion: '>= 1.14.0-0'
-    maintainers:
-    - email: armand.leopold@curie.fr
-      name: armandleopold
-    name: doccano
-    sources:
-    - https://github.com/doccano/doccano
-    urls:
-    - https://github.com/curie-data-factory/helm-charts/releases/download/doccano-1.4.0/doccano-1.4.0.tgz
-    version: 1.4.0
-  - annotations:
-      artifacthub.io/images: |
-        - name: doccano
           image: doccano/doccano:1.5.5
     apiVersion: v2
     appVersion: 1.5.5
@@ -1048,6 +1021,35 @@ entries:
   - annotations:
       artifacthub.io/images: |
         - name: job-orchestrator
+          image: ghcr.io/curie-data-factory/job-orchestrator:1.3.3
+    apiVersion: v2
+    appVersion: 1.3.3
+    created: "2022-03-21T14:01:06.763369742Z"
+    description: Helm Chart for Job Orchestrator, Help Manages jobs by connecting
+      Gitlab Runners / Nexus Ressources with Kubernetes.
+    digest: f13391700495b38d1484ec83be176c0611d998c3c57fa4bdfb9632e8dfdc2a68
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/job-orchestrator
+    icon: https://i.ibb.co/2sGpDKj/favicon.png
+    keywords:
+    - kubernetes
+    - gitlab
+    - devops
+    - docker
+    - nexus
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: job-orchestrator
+    sources:
+    - https://github.com/curie-data-factory/job-orchestrator
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/job-orchestrator-1.10.0/job-orchestrator-1.10.0.tgz
+    version: 1.10.0
+  - annotations:
+      artifacthub.io/images: |
+        - name: job-orchestrator
           image: ghcr.io/curie-data-factory/job-orchestrator:latest
     apiVersion: v2
     appVersion: 1.3.2
@@ -1346,31 +1348,6 @@ entries:
     - https://github.com/curie-data-factory/helm-charts/releases/download/job-orchestrator-1.9.1/job-orchestrator-1.9.1.tgz
     version: 1.9.1
   nexus:
-  - annotations:
-      artifacthub.io/images: |
-        - name: nexus
-          image: sonatype/nexus3:3.38.0
-    apiVersion: v2
-    appVersion: 3.38.0
-    created: "2022-03-21T14:00:52.915987324Z"
-    description: Sonatype Nexus is an open source repository manager
-    digest: 2744ff02f852dd6fc4a7bfb9cbfacd188d92e605188a37cf5a4ff2c298deb165
-    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/nexus
-    icon: https://help.sonatype.com/docs/files/331022/34537964/3/1564671303641/NexusRepo_Icon.png
-    keywords:
-    - nexus
-    - registry
-    kubeVersion: '>= 1.14.0-0'
-    maintainers:
-    - email: armand.leopold@curie.fr
-      name: armandleopold
-    name: nexus
-    sources:
-    - https://github.com/sonatype/nexus-public
-    type: application
-    urls:
-    - https://github.com/curie-data-factory/helm-charts/releases/download/nexus-1.2.0/nexus-1.2.0.tgz
-    version: 1.2.0
   - annotations:
       artifacthub.io/images: |
         - name: nexus
@@ -1851,4 +1828,4 @@ entries:
     urls:
     - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.6/redcap-1.9.6.tgz
     version: 1.9.6
-generated: "2022-03-21T14:00:52.916296128Z"
+generated: "2022-03-21T14:01:06.763660642Z"
