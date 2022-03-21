@@ -2,7 +2,7 @@ apiVersion: v2
 name: gitlab-monitor
 description: A web-based monitor dashboard for GitLab CI
 appVersion: "1.7"
-version: 1.2.10
+version: 1.3.0
 home: https://github.com/timoschwarzer/gitlab-monitor
 icon: https://i.ibb.co/vVys3Yt/logo.png
 sources:
@@ -19,4 +19,4 @@ keywords:
 annotations:
   artifacthub.io/images: |
     - name: gitlab-monitor
-      image: timoschwarzer/gitlab-monitor:latest
+      image: ghcr.io/timoschwarzer/gitlab-monitor:latest
