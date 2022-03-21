@@ -2,7 +2,7 @@
 {{- $serviceName  :=  print .Release.Name "-" .Values.image.name }}
 {{- $servicePort := print .Values.service.targetPort .Values.service.protocol | lower -}}
 
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ .Values.image.name }}
@@ -27,8 +27,11 @@ spec:
     http:
       paths:
         - path: {{ $path }}
+          pathType: Prefix
           backend:
-            serviceName: {{ $serviceName }}
-            servicePort: {{ $servicePort }}
+            service:
+              name: {{ $serviceName }}
+              port:
+                name: {{ $servicePort }}
 {{- end }}
 {{- end -}}
