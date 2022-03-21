@@ -1,0 +1,33 @@
+{{- if .Values.ingress.enabled -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  labels:
+    app: "{{ .Release.Name }}"
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+  name: "{{ .Release.Name }}-ingress"
+  annotations:
+    nginx.ingress.kubernetes.io/client_max_body_size: 10000m
+    nginx.ingress.kubernetes.io/proxy-body-size: 10000m
+    {{- range $key, $value := .Values.ingress.annotations }}
+      {{ $key }}: {{ $value | quote }}
+    {{- end }}
+spec:
+  rules:
+    - host: "{{ .Values.ingress.url }}"
+      http:
+        paths:
+          - path: "/{{ .Values.user }}"
+            pathType: Prefix
+            backend:
+              service:
+                name: "{{ .Release.Name }}-service"
+                port:
+                  name: {{ .Values.service.targetPort }}{{ .Values.service.protocol | lower }}
+  {{- if .Values.ingress.tls }}
+  tls:
+{{ toYaml .Values.ingress.tls | indent 4 }}
+  {{- end -}}
+{{- end -}}
