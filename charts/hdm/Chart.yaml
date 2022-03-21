@@ -3,7 +3,7 @@ name: hdm
 description: Helm chart for HDM (Health Data Metrics) a Data Quality assesment Application.
 type: application
 appVersion: 2.3.0
-version: 2.4.1
+version: 2.4.2
 home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/hdm
 icon: https://i.ibb.co/fqWJSVV/logo-hdm.png
 sources:
@@ -28,4 +28,4 @@ dependencies:
 annotations:
   artifacthub.io/images: |
     - name: hdm
-      image: ghcr.io/curie-data-factory/hdm:2.2.5
+      image: ghcr.io/curie-data-factory/hdm:2.3.0
