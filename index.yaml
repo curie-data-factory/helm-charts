@@ -4,6 +4,33 @@ entries:
   - annotations:
       artifacthub.io/images: |
         - name: doccano
+          image: doccano/doccano:1.6.2
+    apiVersion: v2
+    appVersion: 1.6.2
+    created: "2022-03-21T14:05:41.858218203Z"
+    description: A Helm chart for doccano, Open source text annotation tool for machine
+      learning practitioner.
+    digest: 1c858dce3d239a7c6e64b019c9b6eac334027d836f5de0ee5c11583844076f1a
+    home: https://doccano.herokuapp.com/
+    icon: https://raw.githubusercontent.com/doccano/doccano/master/docs/images/logo/doccano.png
+    keywords:
+    - annotation
+    - ml
+    - text
+    - machine-learning
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: doccano
+    sources:
+    - https://github.com/doccano/doccano
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/doccano-1.4.1/doccano-1.4.1.tgz
+    version: 1.4.1
+  - annotations:
+      artifacthub.io/images: |
+        - name: doccano
           image: doccano/doccano:1.5.5
     apiVersion: v2
     appVersion: 1.5.5
@@ -1821,4 +1848,4 @@ entries:
     urls:
     - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.6/redcap-1.9.6.tgz
     version: 1.9.6
-generated: "2022-03-21T14:01:19.676151004Z"
+generated: "2022-03-21T14:05:41.858670611Z"
