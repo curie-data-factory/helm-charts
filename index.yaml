@@ -1465,6 +1465,32 @@ entries:
     urls:
     - https://github.com/curie-data-factory/helm-charts/releases/download/job-orchestrator-1.9.1/job-orchestrator-1.9.1.tgz
     version: 1.9.1
+  jupyterlab:
+  - annotations:
+      artifacthub.io/images: |
+        - name: jupyter
+          image: jupyter/datascience-notebook:python-3.9.6
+    apiVersion: v2
+    appVersion: jupyter/datascience-notebook:python-3.9.6
+    created: "2022-03-21T15:37:49.772210625Z"
+    description: jupyterlab data science notebook
+    digest: d4d54e2e521f13960860c539bec575e2f44ef04659194ae21ce24d37e55aaf54
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/jupyterlab
+    icon: https://jupyter.org/assets/homepage/main-logo.svg
+    keywords:
+    - jupyter
+    - lab
+    - datascience
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: jupyterlab
+    sources:
+    - https://jupyter.org/
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/jupyterlab-0.1.0/jupyterlab-0.1.0.tgz
+    version: 0.1.0
   nexus:
   - annotations:
       artifacthub.io/images: |
@@ -1993,4 +2019,4 @@ entries:
     urls:
     - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.6/redcap-1.9.6.tgz
     version: 1.9.6
-generated: "2022-03-21T14:05:41.858670611Z"
+generated: "2022-03-21T15:37:49.77258714Z"
