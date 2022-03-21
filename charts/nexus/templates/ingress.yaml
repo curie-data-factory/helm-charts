@@ -1,5 +1,5 @@
 {{- if .Values.ingress.enabled -}}
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   labels:
@@ -18,15 +18,18 @@ spec:
       http:
         paths:
           - path: /
+            pathType: Prefix
             backend:
-              serviceName: "{{ .Release.Name }}-{{ .Values.image.name }}"
-              servicePort: 8083
+              service:
+                name: "{{ .Release.Name }}-{{ .Values.image.name }}"
+                port:
+                  number: 8083
   tls:
   - hosts:
     - {{ .Values.ingress.urldockerrelease }}
     secretName: {{ .Values.ingress.urldockerreleasename }}
 ---
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   labels:
@@ -45,15 +48,18 @@ spec:
       http:
         paths:
           - path: /
+            pathType: Prefix
             backend:
-              serviceName: "{{ .Release.Name }}-{{ .Values.image.name }}"
-              servicePort: 8082
+              service:
+                name: "{{ .Release.Name }}-{{ .Values.image.name }}"
+                port:
+                  number: 8082
   tls:
   - hosts:
     - {{ .Values.ingress.urldockersnapshot }}
     secretName: {{ .Values.ingress.urldockersnapshotname }}
 ---
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   labels:
@@ -72,9 +78,12 @@ spec:
       http:
         paths:
           - path: /
+            pathType: Prefix
             backend:
-              serviceName: "{{ .Release.Name }}-{{ .Values.image.name }}"
-              servicePort: 8081
+              service:
+                name: "{{ .Release.Name }}-{{ .Values.image.name }}"
+                port:
+                  number: 8081
   {{- if .Values.ingress.tls }}
   tls:
 {{ toYaml .Values.ingress.tls | indent 4 }}
