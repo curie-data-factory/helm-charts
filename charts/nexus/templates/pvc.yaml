@@ -13,9 +13,6 @@ metadata:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
-{{- if .Values.persistence.replicas }}
-    storageos.com/replicas: "{{ .Values.persistence.replicas }}"
-{{- end }}
 spec:
   accessModes:
     - {{ .Values.persistence.accessMode | quote }}

@@ -35,9 +35,7 @@ persistence:
   enabled: true
   existingClaim: false
   size: 10Gi
-  storageClass: ""
   accessMode: "ReadWriteOnce"
-  replicas: "1"
   volumeName: "data"
   mountPath: /data
 
