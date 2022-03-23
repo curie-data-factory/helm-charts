@@ -7,6 +7,31 @@ entries:
           image: lscr.io/linuxserver/bookstack:21.12.4
     apiVersion: v2
     appVersion: 21.12.4
+    created: "2022-03-23T15:02:11.559668726Z"
+    dependencies:
+    - name: mysql
+      repository: https://charts.bitnami.com/bitnami
+      version: 8.5.1
+    description: bookstack documentation platform
+    digest: 04f3288613142cb06847f5f6bd92f44dd64667947816692d9e303752d6d5c130
+    home: https://www.bookstackapp.com/
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/BookStack_logo.svg/225px-BookStack_logo.svg.png
+    keywords:
+    - documentation
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: bookstack
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/bookstack-0.1.2/bookstack-0.1.2.tgz
+    version: 0.1.2
+  - annotations:
+      artifacthub.io/images: |
+        - name: bookstack
+          image: lscr.io/linuxserver/bookstack:21.12.4
+    apiVersion: v2
+    appVersion: 21.12.4
     created: "2022-03-23T11:45:37.369864981Z"
     dependencies:
     - name: mysql
@@ -52,6 +77,33 @@ entries:
     - https://github.com/curie-data-factory/helm-charts/releases/download/bookstack-0.1.0/bookstack-0.1.0.tgz
     version: 0.1.0
   doccano:
+  - annotations:
+      artifacthub.io/images: |
+        - name: doccano
+          image: doccano/doccano:1.6.2
+    apiVersion: v2
+    appVersion: 1.6.2
+    created: "2022-03-23T15:02:11.649264216Z"
+    description: A Helm chart for doccano, Open source text annotation tool for machine
+      learning practitioner.
+    digest: 2e7fa745377fa313c07aaee988f424bdc1411f3b93e8264cce5367d49a57510c
+    home: https://doccano.herokuapp.com/
+    icon: https://raw.githubusercontent.com/doccano/doccano/master/docs/images/logo/doccano.png
+    keywords:
+    - annotation
+    - ml
+    - text
+    - machine-learning
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: doccano
+    sources:
+    - https://github.com/doccano/doccano
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/doccano-1.4.2/doccano-1.4.2.tgz
+    version: 1.4.2
   - annotations:
       artifacthub.io/images: |
         - name: doccano
@@ -1549,6 +1601,31 @@ entries:
           image: sonatype/nexus3:3.38.0
     apiVersion: v2
     appVersion: 3.38.0
+    created: "2022-03-23T15:02:11.779017972Z"
+    description: Sonatype Nexus is an open source repository manager
+    digest: 6116705224cd3c8d1e4bd1a7d337a084c241d5646813cd998c557b52aebd2998
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/nexus
+    icon: https://help.sonatype.com/docs/files/331022/34537964/3/1564671303641/NexusRepo_Icon.png
+    keywords:
+    - nexus
+    - registry
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: nexus
+    sources:
+    - https://github.com/sonatype/nexus-public
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/nexus-1.2.1/nexus-1.2.1.tgz
+    version: 1.2.1
+  - annotations:
+      artifacthub.io/images: |
+        - name: nexus
+          image: sonatype/nexus3:3.38.0
+    apiVersion: v2
+    appVersion: 3.38.0
     created: "2022-03-21T14:00:52.915987324Z"
     description: Sonatype Nexus is an open source repository manager
     digest: 2744ff02f852dd6fc4a7bfb9cbfacd188d92e605188a37cf5a4ff2c298deb165
@@ -1786,6 +1863,28 @@ entries:
     - https://github.com/curie-data-factory/helm-charts/releases/download/nexus-1.0.0/nexus-1.0.0.tgz
     version: 1.0.0
   redcap:
+  - apiVersion: v2
+    appVersion: 10.6.12
+    created: "2022-03-23T15:02:11.911208143Z"
+    description: Helm chart for RedCap, A CRF Application for survey research.
+    digest: b5045491aae3a6de09b82650324426346e6dfb09298556a3b8a57e9a39b44162
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/redcap
+    icon: https://www.redcapbrasil.com.br/wp-content/uploads/2018/02/rbone.png
+    keywords:
+    - redcap
+    - crf
+    - research
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: redcap
+    sources:
+    - https://www.project-redcap.org/
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.10.1/redcap-1.10.1.tgz
+    version: 1.10.1
   - apiVersion: v2
     appVersion: 10.6.12
     created: "2022-03-21T14:01:19.675844892Z"
@@ -2070,4 +2169,4 @@ entries:
     urls:
     - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.6/redcap-1.9.6.tgz
     version: 1.9.6
-generated: "2022-03-23T11:45:37.370350186Z"
+generated: "2022-03-23T15:02:11.912060649Z"
