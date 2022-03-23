@@ -49,21 +49,6 @@ spec:
           name: "{{ .Release.Name }}-dbs-data"
         - mountPath: /nexus-data/restore-from-backup
           name: "{{ .Release.Name }}-db-restore"
-      {{- if .Values.dump.enabled }}
-      - name: {{ .Chart.Name }}-dump
-        image: {{ .Values.dump.image }}
-        imagePullPolicy: Always
-        {{- with .Values.dump.env }}
-        env:
-{{ toYaml . | indent 8 }}
-        {{- end }}
-        volumeMounts:
-        - mountPath: {{ .Values.dump.mountPath }}
-          name: "{{ .Release.Name }}-blobs"
-          readOnly: true
-        - mountPath: /nfs
-          name: nfs-dump
-      {{- end }}
       initContainers:
       - args:
         - chown
@@ -77,6 +62,8 @@ spec:
           name: "{{ .Release.Name }}-blobs"
         - mountPath: /data/db
           name: "{{ .Release.Name }}-dbs-data"
+        - mountPath: /data/restore
+          name: "{{ .Release.Name }}-db-restore"
       volumes:
       - name: "{{ .Release.Name }}-blobs"
         persistentVolumeClaim:
@@ -87,11 +74,6 @@ spec:
       - name: "{{ .Release.Name }}-db-restore"
         persistentVolumeClaim:
           claimName: "{{ .Release.Name }}-db-restore"
-      {{- if .Values.dump.enabled }}
-      - hostPath:
-          path: {{ .Values.dump.nfsPath }}
-        name: nfs-dump
-      {{- end }}
       {{- if .Values.image.deployRegistry }}
       imagePullSecrets:
       - name: "{{ .Values.image.name }}-{{ .Values.image.imagePullSecrets }}"
