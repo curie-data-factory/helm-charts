@@ -35,7 +35,5 @@ ingress:
 persistence:
   enabled: true
   size: 30Gi
-  storageClass: storageos-ssd-ext4
   accessMode: "ReadWriteOnce"
-  replicas: "1"
   mountPath: /home/jovyan/work
