@@ -1,7 +1,7 @@
 apiVersion: v2
 name: jupyterlab
 appVersion: "jupyter/datascience-notebook:python-3.9.6"
-version: "0.1.0"
+version: "0.1.1"
 description: jupyterlab data science notebook
 home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/jupyterlab
 icon: https://jupyter.org/assets/homepage/main-logo.svg
