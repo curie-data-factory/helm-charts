@@ -41,9 +41,7 @@ persistence:
   enabled: false
   existingClaim: false
   size: 50Gi
-  storageClass: ""
   accessMode: "ReadWriteOnce"
-  replicas: "1"
   volumeName: "edocs"
   mountPath: /var/www/site/edocs
 
