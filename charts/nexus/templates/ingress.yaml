@@ -73,6 +73,10 @@ metadata:
 {{ toYaml . | indent 4 }}
 {{- end }}
 spec:
+{{- if .Values.ingress.tls }}
+  tls:
+{{ toYaml .Values.ingress.tls | indent 4 }}
+{{- end }}
   rules:
     - host: "{{ .Values.ingress.url }}"
       http:
@@ -84,8 +88,4 @@ spec:
                 name: "{{ .Release.Name }}-{{ .Values.image.name }}"
                 port:
                   number: 8081
-  {{- if .Values.ingress.tls }}
-  tls:
-{{ toYaml .Values.ingress.tls | indent 4 }}
-  {{- end -}}
 {{- end -}}
