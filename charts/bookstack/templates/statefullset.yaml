@@ -1,42 +1,42 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: "{{ .Release.Name }}-{{ .Values.bookstack.image.name }}"
+  name: "{{ .Release.Name }}-{{ .Values.image.name }}"
   labels:
-    app: "{{ .Release.Name }}-{{ .Values.bookstack.image.name }}"
+    app: "{{ .Release.Name }}-{{ .Values.image.name }}"
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     heritage: {{ .Release.Service }}
     release: {{ .Release.Name }}
 {{ include "bookstack.labels" . | indent 4 }}
 spec:
   serviceName: "{{ .Release.Name }}"  
-  replicas: {{ .Values.bookstack.image.replicaCount }}
+  replicas: {{ .Values.image.replicaCount }}
   selector:
     matchLabels:
-      app: "{{ .Release.Name }}-{{ .Values.bookstack.image.name }}"
+      app: "{{ .Release.Name }}-{{ .Values.image.name }}"
       release: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: "{{ .Release.Name }}-{{ .Values.bookstack.image.name }}"
+        app: "{{ .Release.Name }}-{{ .Values.image.name }}"
         release: {{ .Release.Name }}
       annotations:
         rollme: {{ randAlphaNum 5 | quote }}
     spec:
       containers:
-      - name: {{ .Values.bookstack.image.name }}
-        image: "{{ .Values.bookstack.image.repository }}:{{ .Values.bookstack.image.tag }}"
-        {{- with .Values.bookstack.env }}
+      - name: {{ .Values.image.name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        {{- with .Values.env }}
         env:
 {{ toYaml . | indent 8 }}
         {{- end }}
         - name: DB_HOST
           value: "{{ .Release.Name }}-mysql"
-        imagePullPolicy: {{ .Values.bookstack.image.pullPolicy }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
-        - containerPort: {{ .Values.bookstack.service.targetPort }}
-          name: {{ .Values.bookstack.service.targetPort }}{{ .Values.bookstack.service.protocol | lower }}
-          protocol: {{ .Values.bookstack.service.protocol }}
+        - containerPort: {{ .Values.service.targetPort }}
+          name: {{ .Values.service.targetPort }}{{ .Values.service.protocol | lower }}
+          protocol: {{ .Values.service.protocol }}
         volumeMounts:
         - mountPath: {{ .Values.persistence.mountPath }}
           name: "{{ .Release.Name }}-data"
