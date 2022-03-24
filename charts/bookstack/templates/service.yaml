@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: "{{ .Release.Name }}-{{ .Values.bookstack.image.name }}"
+  name: "{{ .Release.Name }}-{{ .Values.image.name }}"
 spec:
-  type: {{ .Values.bookstack.service.type }}
+  type: {{ .Values.service.type }}
   ports:
-    - name: {{ .Values.bookstack.service.targetPort }}{{ .Values.bookstack.service.protocol | lower }}
-      port: {{ .Values.bookstack.service.targetPort }}
-      protocol: {{ .Values.bookstack.service.protocol }}
-      targetPort: {{ .Values.bookstack.service.targetPort }}
+    - name: {{ .Values.service.targetPort }}{{ .Values.service.protocol | lower }}
+      port: {{ .Values.service.targetPort }}
+      protocol: {{ .Values.service.protocol }}
+      targetPort: {{ .Values.service.targetPort }}
   selector:
-    app: "{{ .Release.Name }}-{{ .Values.bookstack.image.name }}"
+    app: "{{ .Release.Name }}-{{ .Values.image.name }}"
     release: {{ .Release.Name }}
