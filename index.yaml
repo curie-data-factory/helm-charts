@@ -7,6 +7,31 @@ entries:
           image: lscr.io/linuxserver/bookstack:21.12.4
     apiVersion: v2
     appVersion: 21.12.4
+    created: "2022-03-24T10:52:38.1234159Z"
+    dependencies:
+    - name: mysql
+      repository: https://charts.bitnami.com/bitnami
+      version: 8.5.1
+    description: bookstack documentation platform
+    digest: 52ab54b3b969914dbf01840e1726de7fd1706c24bcd0dafe829b2f340a6a5fbb
+    home: https://www.bookstackapp.com/
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/BookStack_logo.svg/225px-BookStack_logo.svg.png
+    keywords:
+    - documentation
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: bookstack
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/bookstack-0.1.3/bookstack-0.1.3.tgz
+    version: 0.1.3
+  - annotations:
+      artifacthub.io/images: |
+        - name: bookstack
+          image: lscr.io/linuxserver/bookstack:21.12.4
+    apiVersion: v2
+    appVersion: 21.12.4
     created: "2022-03-23T15:02:11.559668726Z"
     dependencies:
     - name: mysql
@@ -1575,6 +1600,31 @@ entries:
           image: jupyter/datascience-notebook:python-3.9.6
     apiVersion: v2
     appVersion: jupyter/datascience-notebook:python-3.9.6
+    created: "2022-03-24T10:52:38.217355142Z"
+    description: jupyterlab data science notebook
+    digest: 439f41c74f33e7ad6b8ea319b7387f87784aa628cbfb51be7ea5e630808809b9
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/jupyterlab
+    icon: https://jupyter.org/assets/homepage/main-logo.svg
+    keywords:
+    - jupyter
+    - lab
+    - datascience
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: jupyterlab
+    sources:
+    - https://jupyter.org/
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/jupyterlab-0.1.2/jupyterlab-0.1.2.tgz
+    version: 0.1.2
+  - annotations:
+      artifacthub.io/images: |
+        - name: jupyter
+          image: jupyter/datascience-notebook:python-3.9.6
+    apiVersion: v2
+    appVersion: jupyter/datascience-notebook:python-3.9.6
     created: "2022-03-23T16:25:47.664200246Z"
     description: jupyterlab data science notebook
     digest: 9dca9d4c02c55f2f53851e9e2d9d6e82ec03d9da60487e5717163854c97000eb
@@ -1620,6 +1670,31 @@ entries:
     - https://github.com/curie-data-factory/helm-charts/releases/download/jupyterlab-0.1.0/jupyterlab-0.1.0.tgz
     version: 0.1.0
   nexus:
+  - annotations:
+      artifacthub.io/images: |
+        - name: nexus
+          image: sonatype/nexus3:3.38.0
+    apiVersion: v2
+    appVersion: 3.38.0
+    created: "2022-03-24T10:52:38.315230112Z"
+    description: Sonatype Nexus is an open source repository manager
+    digest: 977b3819d250176c2a4667c8560abfcb42df478ee67f8833121d36263e638986
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/nexus
+    icon: https://help.sonatype.com/docs/files/331022/34537964/3/1564671303641/NexusRepo_Icon.png
+    keywords:
+    - nexus
+    - registry
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: nexus
+    sources:
+    - https://github.com/sonatype/nexus-public
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/nexus-1.2.3/nexus-1.2.3.tgz
+    version: 1.2.3
   - annotations:
       artifacthub.io/images: |
         - name: nexus
@@ -2194,4 +2269,4 @@ entries:
     urls:
     - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.6/redcap-1.9.6.tgz
     version: 1.9.6
-generated: "2022-03-23T16:25:47.664693359Z"
+generated: "2022-03-24T10:52:38.316084361Z"
