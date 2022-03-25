@@ -7,6 +7,31 @@ entries:
           image: lscr.io/linuxserver/bookstack:21.12.4
     apiVersion: v2
     appVersion: 21.12.4
+    created: "2022-03-25T15:06:57.633271524Z"
+    dependencies:
+    - name: mysql
+      repository: https://charts.bitnami.com/bitnami
+      version: 8.5.1
+    description: bookstack documentation platform
+    digest: e4668d25961dfb9f3cf5ec37cfacc0c3cedfb587269873a742a6cd477be9f15e
+    home: https://www.bookstackapp.com/
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/BookStack_logo.svg/225px-BookStack_logo.svg.png
+    keywords:
+    - documentation
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: bookstack
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/bookstack-0.1.4/bookstack-0.1.4.tgz
+    version: 0.1.4
+  - annotations:
+      artifacthub.io/images: |
+        - name: bookstack
+          image: lscr.io/linuxserver/bookstack:21.12.4
+    apiVersion: v2
+    appVersion: 21.12.4
     created: "2022-03-24T10:52:38.1234159Z"
     dependencies:
     - name: mysql
@@ -102,6 +127,37 @@ entries:
     - https://github.com/curie-data-factory/helm-charts/releases/download/bookstack-0.1.0/bookstack-0.1.0.tgz
     version: 0.1.0
   doccano:
+  - annotations:
+      artifacthub.io/images: |
+        - name: doccano
+          image: doccano/doccano:1.6.2
+    apiVersion: v2
+    appVersion: 1.6.2
+    created: "2022-03-25T15:06:57.728276374Z"
+    dependencies:
+    - name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.1.9
+    description: A Helm chart for doccano, Open source text annotation tool for machine
+      learning practitioner.
+    digest: 665e5729c165f1f2eb931a196613d6d129ef2cc69ab5ef612e1e967322dd000c
+    home: https://doccano.herokuapp.com/
+    icon: https://raw.githubusercontent.com/doccano/doccano/master/docs/images/logo/doccano.png
+    keywords:
+    - annotation
+    - ml
+    - text
+    - machine-learning
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: doccano
+    sources:
+    - https://github.com/doccano/doccano
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/doccano-2.0.0/doccano-2.0.0.tgz
+    version: 2.0.0
   - annotations:
       artifacthub.io/images: |
         - name: doccano
@@ -400,6 +456,32 @@ entries:
     - https://github.com/curie-data-factory/helm-charts/releases/download/doccano-1.3.0/doccano-1.3.0.tgz
     version: 1.3.0
   gitlab-monitor:
+  - annotations:
+      artifacthub.io/images: |
+        - name: gitlab-monitor
+          image: ghcr.io/timoschwarzer/gitlab-monitor:latest
+    apiVersion: v2
+    appVersion: "1.7"
+    created: "2022-03-25T15:06:57.820375877Z"
+    description: A web-based monitor dashboard for GitLab CI
+    digest: cab5c0bdad682a2f24b004efa299b49761cdb5596fcba302106c0166187bcb17
+    home: https://github.com/timoschwarzer/gitlab-monitor
+    icon: https://i.ibb.co/vVys3Yt/logo.png
+    keywords:
+    - dashboard
+    - devops
+    - gitlab
+    - git
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: gitlab-monitor
+    sources:
+    - https://github.com/timoschwarzer/gitlab-monitor
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/gitlab-monitor-1.3.1/gitlab-monitor-1.3.1.tgz
+    version: 1.3.1
   - annotations:
       artifacthub.io/images: |
         - name: gitlab-monitor
@@ -2269,4 +2351,4 @@ entries:
     urls:
     - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.6/redcap-1.9.6.tgz
     version: 1.9.6
-generated: "2022-03-24T10:52:38.316084361Z"
+generated: "2022-03-25T15:06:57.821110089Z"
