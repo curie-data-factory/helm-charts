@@ -7,10 +7,10 @@ image:
   deployRegistry: false
   imagePullSecrets: registrysecret
   dataSecret: |-
-    {"auths":{"registry.company.com":{"password":"","username":""}}}
+    {"auths":{"registry.localhost":{"password":"","username":""}}}
 
 env:
-  ADMIN_EMAIL: admin@company.com
+  ADMIN_EMAIL: admin@localhost
   ADMIN_USERNAME: admin
 
 deploySecret: true
@@ -25,10 +25,10 @@ ingress:
   enabled: true
   path: /
   hostnames:
-  - doccano.company.com
+  - doccano.localhost
   tls:
   - hosts:
-    - doccano.company.com
+    - doccano.localhost
     secretName: doccano
 
 persistence:
@@ -42,5 +42,10 @@ persistence:
   annotations:
     helm.sh/resource-policy: keep
 
-dump:
-  enabled: false
+postgresql:
+  global:
+    postgresql:
+      auth:
+        database: doccano
+        username: doccano
+        password: 58sdf9hgd1gs8sdfzerJHFdf

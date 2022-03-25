@@ -28,7 +28,8 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
         - name: GITLAB_MONITOR_CONFIG
-          value: | {{ .Values.config | trim | nindent 12 }}
+          value: |-
+            {{ .Values.config | trim | nindent 12 }}
         ports:
         - containerPort: {{ .Values.service.targetPort }}
           name: {{ .Values.service.targetPort }}{{ .Values.service.protocol | lower }}

@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-conf
+  namespace: {{ .Release.Namespace  }}
+data:
+  bootstrap.sh: |-
+    #!/bin/bash
+    export PATH=$PATH:/home/doccano/.local/bin
+    # install dependency
+    python -m pip install doccano
+    python -m pip install 'doccano[postgresql]'
+    # Initialize database.
+    doccano init
+    # Create a super user.
+    doccano createuser --username admin --password {{ .Values.ADMIN_PASSWORD }}
+
+    # Start Task Thread
+    doccano task &
+
+    # Start web server.
+    doccano webserver --port 8000

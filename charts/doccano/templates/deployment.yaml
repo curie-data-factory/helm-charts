@@ -25,7 +25,10 @@ spec:
         rollme: {{ randAlphaNum 5 | quote }}
     spec:
       containers:
-      - env:
+      - args:
+        - /bin/bash
+        - /config/bootstrap.sh
+        env:
         - name: ADMIN_EMAIL
           value: {{ .Values.env.ADMIN_EMAIL }}
         - name: ADMIN_USERNAME
@@ -36,6 +39,8 @@ spec:
               key: ADMIN_PASSWORD
               name: doccano-password
               optional: false
+        - name: DATABASE_URL
+          value: "postgres://{{ .Values.postgresql.global.postgresql.auth.username }}:{{ .Values.postgresql.global.postgresql.auth.password }}@{{ .Release.Name }}-postgresql:5432/{{ .Values.postgresql.global.postgresql.auth.database }}?sslmode=disable"
         name: {{ .Values.image.name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
@@ -46,21 +51,8 @@ spec:
         volumeMounts:
         - mountPath: {{ .Values.persistence.mountPath }}
           name: {{ .Values.persistence.volumeName }}
-      {{- if .Values.dump.enabled }}
-      - name: {{ .Chart.Name }}-dump
-        image: {{ .Values.dump.image }}
-        imagePullPolicy: Always
-        {{- with .Values.dump.env }}
-        env:
-{{ toYaml . | indent 8 }}
-        {{- end }}
-        volumeMounts:
-        - mountPath: {{ .Values.dump.mountPath }}
-          name: {{ .Values.persistence.volumeName }}
-          readOnly: true
-        - mountPath: /nfs
-          name: nfs-dump
-      {{- end }}
+        - mountPath: /config
+          name: bootstrap
       initContainers:
       - args:
         - chown
@@ -73,14 +65,17 @@ spec:
         - mountPath: {{ .Values.persistence.mountPath }}
           name: {{ .Values.persistence.volumeName }}
       volumes:
+      - configMap:
+          defaultMode: 0777
+          items:
+          - key: bootstrap.sh
+            path: ./bootstrap.sh
+          name: {{ .Release.Name }}-conf
+          optional: false
+        name: bootstrap
       - name: {{ .Values.persistence.volumeName }}
         persistentVolumeClaim:
           claimName: "{{ .Release.Name }}-{{ .Values.persistence.volumeName }}"
-      {{- if .Values.dump.enabled }}
-      - hostPath:
-          path: {{ .Values.dump.nfsPath }}
-        name: nfs-dump
-      {{- end }}
       {{- if .Values.image.deployRegistry }}
       imagePullSecrets:
       - name: "{{ .Values.image.name }}-{{ .Values.image.imagePullSecrets }}"
