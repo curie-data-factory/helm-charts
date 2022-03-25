@@ -1,7 +1,7 @@
 apiVersion: v2
 name: doccano
 appVersion: 1.6.2
-version: 1.4.2
+version: 2.0.0
 description: A Helm chart for doccano, Open source text annotation tool for machine learning practitioner.
 home: https://doccano.herokuapp.com/
 icon: https://raw.githubusercontent.com/doccano/doccano/master/docs/images/logo/doccano.png
@@ -11,6 +11,10 @@ maintainers:
   - name: armandleopold
     email: armand.leopold@curie.fr
 kubeVersion: ">= 1.14.0-0"
+dependencies:
+  - name: postgresql
+    repository: https://charts.bitnami.com/bitnami
+    version: 11.1.9
 keywords:
   - annotation
   - ml
