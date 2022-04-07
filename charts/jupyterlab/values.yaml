@@ -2,6 +2,7 @@
 replicaCount: 1
 
 user: master
+root: false
 
 gpu:
   enabled: false

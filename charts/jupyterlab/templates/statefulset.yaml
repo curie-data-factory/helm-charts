@@ -60,15 +60,20 @@ spec:
         - containerPort: {{ .Values.service.targetPort }}
           name: {{ .Values.service.targetPort }}{{ .Values.service.protocol | lower }}
           protocol: {{ .Values.service.protocol }}
+        {{- if .Values.root.enabled }}
+        securityContext:
+          allowPrivilegeEscalation: true
+          runAsUser: 0
+        {{- end }}
         resources:
           requests:
             cpu: "1"
             memory: 1000Mi
-        {{- if .Values.resources.enabled }}          
+        {{- if .Values.resources.enabled }}
           limits:
             cpu: "{{ .Values.resources.cpu }}"
             memory: {{ .Values.resources.memory }}
-        {{- end }}            
+        {{- end }}
         volumeMounts:
         {{- if .Values.gpu.enabled }}
         - mountPath: "/tf"
