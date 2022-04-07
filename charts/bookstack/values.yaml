@@ -21,7 +21,7 @@ image:
   name: bookstack
   deployRegistry: true
 
-env:
+extraEnv:
 - name: PUID
   value: "1000"
 - name: PGID

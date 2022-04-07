@@ -26,7 +26,7 @@ spec:
       containers:
       - name: {{ .Values.image.name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-        {{- with .Values.env }}
+        {{- with .Values.extraEnv }}
         env:
 {{ toYaml . | indent 8 }}
         {{- end }}
