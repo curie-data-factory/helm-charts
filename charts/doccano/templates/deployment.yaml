@@ -41,6 +41,11 @@ spec:
               optional: false
         - name: DATABASE_URL
           value: "postgres://{{ .Values.postgresql.global.postgresql.auth.username }}:{{ .Values.postgresql.global.postgresql.auth.password }}@{{ .Release.Name }}-postgresql:5432/{{ .Values.postgresql.global.postgresql.auth.database }}?sslmode=disable"
+        {{- if .Values.extraEnv }}
+        {{- with .Values.extraEnv }}
+{{ toYaml . | indent 8 }}
+        {{- end }}
+        {{- end }}
         name: {{ .Values.image.name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
