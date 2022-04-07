@@ -60,7 +60,7 @@ spec:
         - containerPort: {{ .Values.service.targetPort }}
           name: {{ .Values.service.targetPort }}{{ .Values.service.protocol | lower }}
           protocol: {{ .Values.service.protocol }}
-        {{- if .Values.root.enabled }}
+        {{- if .Values.root }}
         securityContext:
           allowPrivilegeEscalation: true
           runAsUser: 0
