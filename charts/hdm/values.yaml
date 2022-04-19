@@ -60,11 +60,8 @@ mysql:
 
   primary:
     persistence:
+      enabled: true
       size: 20Gi
-
-    configuration: |-
-      [mysqld]
-      skip-log-bin
 
 ################################################################################
 ## Kibana
