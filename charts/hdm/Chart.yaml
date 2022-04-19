@@ -3,7 +3,7 @@ name: hdm
 description: Helm chart for HDM (Health Data Metrics) a Data Quality assesment Application.
 type: application
 appVersion: 2.3.0
-version: 2.4.2
+version: 2.4.3
 home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/hdm
 icon: https://i.ibb.co/fqWJSVV/logo-hdm.png
 sources:
@@ -18,7 +18,7 @@ keywords:
 dependencies:
   - name: mysql
     repository: https://charts.bitnami.com/bitnami
-    version: 8.5.1
+    version: 8.9.1
   - name: elasticsearch
     repository: https://helm.elastic.co
     version: 7.16.1
