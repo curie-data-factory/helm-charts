@@ -1,7 +1,5 @@
 image:
   replicaCount: 1
-#   repository: registry.company.com/redcap
-#   tag: "1.3.0"
   pullPolicy: IfNotPresent
   name: redcap
   deployRegistry: false
