@@ -12,7 +12,7 @@ data:
     echo "password=$SMB_PASSWORD" >> /root/.smbcred
     echo "domain=$SMB_DOMAIN" >> /root/.smbcred
 
-    mkdir $SMB_DESTPATH
+    mkdir -p $SMB_DESTPATH
 
     mount -vvv -t cifs -o noperm,credentials=/root/.smbcred $SMB_SOURCEPATH $SMB_DESTPATH
 
