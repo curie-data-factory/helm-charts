@@ -14,7 +14,7 @@ kubeVersion: ">= 1.14.0-0"
 dependencies:
   - name: postgresql
     repository: https://charts.bitnami.com/bitnami
-    version: 11.1.9
+    version: 10.16.2
 keywords:
   - annotation
   - ml
