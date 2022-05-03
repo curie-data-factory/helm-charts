@@ -158,6 +158,37 @@ entries:
           image: doccano/doccano:1.6.2
     apiVersion: v2
     appVersion: 1.6.2
+    created: "2022-05-03T11:53:06.938644806Z"
+    dependencies:
+    - name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.16.2
+    description: A Helm chart for doccano, Open source text annotation tool for machine
+      learning practitioner.
+    digest: dff06ea4a070076ba53141a41afb0bfdb5c8860e1f953ebc6ad94a156a2a265c
+    home: https://doccano.herokuapp.com/
+    icon: https://raw.githubusercontent.com/doccano/doccano/master/docs/images/logo/doccano.png
+    keywords:
+    - annotation
+    - ml
+    - text
+    - machine-learning
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: doccano
+    sources:
+    - https://github.com/doccano/doccano
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/doccano-2.0.3/doccano-2.0.3.tgz
+    version: 2.0.3
+  - annotations:
+      artifacthub.io/images: |
+        - name: doccano
+          image: doccano/doccano:1.6.2
+    apiVersion: v2
+    appVersion: 1.6.2
     created: "2022-04-20T12:41:32.75874988Z"
     dependencies:
     - name: postgresql
@@ -2623,4 +2654,4 @@ entries:
     urls:
     - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.6/redcap-1.9.6.tgz
     version: 1.9.6
-generated: "2022-05-03T08:44:53.659014168Z"
+generated: "2022-05-03T11:53:06.939273913Z"
