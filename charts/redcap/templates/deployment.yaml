@@ -141,6 +141,9 @@ spec:
       - configMap:
           defaultMode: 420
           name: "{{ .Release.Name }}-conf-mail"
+          items:
+          - key: msmtprc
+            path: ./msmtprc
         name: mail
       {{- end }}
       {{- if .Values.persistence.enabled }}
