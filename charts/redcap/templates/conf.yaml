@@ -19,7 +19,7 @@ data:
     service watchdog start
 
     # copie de la conf mail
-    cp /config/mail /etc/msmtprc
+    cp /config/mail/msmtprc /etc/msmtprc
 
     # Lancement du serveur web apache
     /usr/sbin/apache2ctl -D FOREGROUND
