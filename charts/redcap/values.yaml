@@ -7,6 +7,20 @@ image:
   dataSecret: |-
     {"auths":{"registry.company.com":{"password":"","username":""}}}
 
+mail:
+  enabled: true
+  config: |-
+    # Set default values for all following accounts.
+    defaults
+    port 25
+
+    account redcapmailuser
+    host smt.company.com
+    from <user>@redcap.company.com
+
+    # Set a default account
+    account default : redcapmailuser
+
 livenesscheck: true
 
 service:
