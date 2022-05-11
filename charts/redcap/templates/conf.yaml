@@ -1,8 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Release.Name }}-conf
-  namespace: {{ .Release.Namespace  }}
+  name: "{{ .Release.Name | trunc 63 }}-conf"
 data:
   bootstrap.sh: |-
     #!/bin/bash
@@ -19,5 +18,18 @@ data:
     # Lancement WATCHDOG
     service watchdog start
 
+    # copie de la conf mail
+    cp /config/mail /etc/msmtprc
+
     # Lancement du serveur web apache
     /usr/sbin/apache2ctl -D FOREGROUND
+---
+{{- if .Values.mail.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "{{ .Release.Name | trunc 63 }}-conf-mail"
+data:
+  msmtprc: |-
+{{ .Values.mail.config | indent 4 }}
+{{- end }}

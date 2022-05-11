@@ -108,6 +108,10 @@ spec:
           name: ldap-config
         - mountPath: /config
           name: bootstrap
+        {{- if .Values.mail.enabled }}
+        - mountPath: /config/mail
+          name: mail
+        {{- end }}
         {{- if .Values.persistence.enabled }}
         - mountPath: /persistentedocs
           name: persistentedocs
@@ -130,9 +134,15 @@ spec:
           items:
           - key: bootstrap.sh
             path: ./bootstrap.sh
-          name: {{ .Release.Name }}-conf
+          name: "{{ .Release.Name }}-conf"
           optional: false
         name: bootstrap
+      {{- if .Values.mail.enabled }}
+      - configMap:
+          defaultMode: 420
+          name: "{{ .Release.Name }}-conf-mail"
+        name: mail
+      {{- end }}
       {{- if .Values.persistence.enabled }}
       - name: persistentedocs
         persistentVolumeClaim:
