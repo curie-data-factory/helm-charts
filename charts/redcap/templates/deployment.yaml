@@ -163,23 +163,6 @@ spec:
         - mountPath: /persistentedocs
           name: persistentedocs
       {{- end }}
-      volumes:
-      - name: ldap-config
-        secret:
-          defaultMode: 511
-          items:
-          - key: ldap_config.php
-            path: ./ldap_config.php
-          optional: false
-          secretName: redcap-server-secrets
-      - configMap:
-          defaultMode: 256
-          items:
-          - key: bootstrap.sh
-            path: ./bootstrap.sh
-          name: {{ .Release.Name }}-conf
-          optional: false
-        name: bootstrap
       {{- if .Values.persistence.enabled }}
       - name: persistentedocs
         persistentVolumeClaim:
