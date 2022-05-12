@@ -2262,6 +2262,28 @@ entries:
   redcap:
   - apiVersion: v2
     appVersion: 10.6.12
+    created: "2022-05-12T12:12:24.526472038Z"
+    description: Helm chart for RedCap, A CRF Application for survey research.
+    digest: e5defd30332e9ec317c00e775172d9872e47456180e9d1d192894071640a087d
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/redcap
+    icon: https://www.redcapbrasil.com.br/wp-content/uploads/2018/02/rbone.png
+    keywords:
+    - redcap
+    - crf
+    - research
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: redcap
+    sources:
+    - https://www.project-redcap.org/
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.10.9/redcap-1.10.9.tgz
+    version: 1.10.9
+  - apiVersion: v2
+    appVersion: 10.6.12
     created: "2022-05-11T15:48:50.537010548Z"
     description: Helm chart for RedCap, A CRF Application for survey research.
     digest: e7792f77005e097b9c8498b3c8f07ec83716d033adb0be3f0aafa884ef41b90a
@@ -2720,4 +2742,4 @@ entries:
     urls:
     - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.6/redcap-1.9.6.tgz
     version: 1.9.6
-generated: "2022-05-11T15:48:50.538434114Z"
+generated: "2022-05-12T12:12:24.52695835Z"
