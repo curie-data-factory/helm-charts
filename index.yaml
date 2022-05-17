@@ -1872,6 +1872,31 @@ entries:
           image: jupyter/datascience-notebook:python-3.9.6
     apiVersion: v2
     appVersion: jupyter/datascience-notebook:python-3.9.6
+    created: "2022-05-17T09:56:46.607052822Z"
+    description: jupyterlab data science notebook
+    digest: e78b73c06e635e91f63974c4005247b75679311fa9147f98648fb5c992736e4e
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/jupyterlab
+    icon: https://jupyter.org/assets/homepage/main-logo.svg
+    keywords:
+    - jupyter
+    - lab
+    - datascience
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: jupyterlab
+    sources:
+    - https://jupyter.org/
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/jupyterlab-0.1.4/jupyterlab-0.1.4.tgz
+    version: 0.1.4
+  - annotations:
+      artifacthub.io/images: |
+        - name: jupyter
+          image: jupyter/datascience-notebook:python-3.9.6
+    apiVersion: v2
+    appVersion: jupyter/datascience-notebook:python-3.9.6
     created: "2022-04-07T12:32:03.562214951Z"
     description: jupyterlab data science notebook
     digest: 25fba12ec08e3be7db64927fe3eec610f69717b5b877ef2bfe0906fc8186b2b3
@@ -2742,4 +2767,4 @@ entries:
     urls:
     - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.6/redcap-1.9.6.tgz
     version: 1.9.6
-generated: "2022-05-12T12:12:24.52695835Z"
+generated: "2022-05-17T09:56:46.607624429Z"
