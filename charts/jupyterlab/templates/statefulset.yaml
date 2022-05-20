@@ -52,9 +52,15 @@ spec:
           --allow-root'
         {{- else }}
         args:
+        {{- if .Values.root }}
+        - /bin/bash
+        - -c
+        - 'cp -r /home/jovyan/work/.ssh /root/ 2>/dev/null || : && jupyter lab --notebook-dir=/home/jovyan/work --ip 0.0.0.0 --no-browser --allow-root'
+        {{- else }}
         - /bin/bash
         - -c
         - 'cp -r /home/jovyan/work/.ssh /home/jovyan/ 2>/dev/null || : && jupyter lab --notebook-dir=/home/jovyan/work --ip 0.0.0.0 --no-browser --allow-root'
+        {{- end }}
         {{- end }}
         ports:
         - containerPort: {{ .Values.service.targetPort }}
