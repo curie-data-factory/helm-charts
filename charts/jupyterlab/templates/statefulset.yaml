@@ -48,7 +48,7 @@ spec:
         args:
         - bash
         - -c
-        - 'source /etc/bash.bashrc && cp -r /tf/.ssh /tf 2>/dev/null || : && jupyter lab --notebook-dir=/tf --ip 0.0.0.0 --no-browser --allow-root 
+        - 'source /etc/bash.bashrc && cp -r /tf/.ssh /tf 2>/dev/null || : && jupyter lab --notebook-dir=/tf --ip 0.0.0.0 --no-browser --allow-root
           --allow-root'
         {{- else }}
         args:
@@ -88,6 +88,10 @@ spec:
         - mountPath: {{ .Values.persistence.mountPath }}
           name: "{{ .Release.Name }}-{{ .Values.user }}-data"
         {{- end }}
+      {{- if .Values.image.deployRegistry }}
+      imagePullSecrets:
+      - name: {{ .Values.image.imagePullSecrets }}
+      {{- end }}
       volumes:
       - name: "{{ .Release.Name }}-{{ .Values.user }}-data"
         persistentVolumeClaim:
