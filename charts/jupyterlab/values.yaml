@@ -16,6 +16,8 @@ resources:
 image:
   repository: jupyter/datascience-notebook:python-3.9.6
   pullPolicy: IfNotPresent
+  deployRegistry: false
+  # imagePullSecrets:
 
 # Service discovery for Website
 service:
