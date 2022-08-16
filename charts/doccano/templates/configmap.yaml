@@ -9,8 +9,8 @@ data:
     cd /doccano
     export PATH=$PATH:/home/doccano/.local/bin
     # install dependency
-    python -m pip install doccano==1.6.2
-    python -m pip install 'doccano[postgresql]==1.6.2'
+    python -m pip install doccano=={{ .Values.image.tag }}
+    python -m pip install 'doccano[postgresql]=={{ .Values.image.tag }}'
     # Initialize database.
     doccano init
     # Create a super user.
