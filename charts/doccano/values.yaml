@@ -1,7 +1,7 @@
 image:
   replicaCount: 1
   repository: doccano/doccano
-  tag: "1.6.2"
+  tag: "1.8.0"
   pullPolicy: IfNotPresent
   name: doccano
   deployRegistry: false
@@ -43,6 +43,8 @@ persistence:
     helm.sh/resource-policy: keep
 
 postgresql:
+  image:
+    tag: 11.14.0-debian-10-r28
   global:
     postgresql:
       auth:
