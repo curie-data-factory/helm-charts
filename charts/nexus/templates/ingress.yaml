@@ -17,7 +17,7 @@ spec:
     - host: {{ .Values.ingress.urldockerrelease }}
       http:
         paths:
-          - path: /
+          - path: {{ .Values.ingress.urlDockerReleasePath }}
             pathType: Prefix
             backend:
               service:
@@ -47,7 +47,7 @@ spec:
     - host: {{ .Values.ingress.urldockersnapshot }}
       http:
         paths:
-          - path: /
+          - path: {{ .Values.ingress.urlDockerSnapshotPath }}
             pathType: Prefix
             backend:
               service:
@@ -81,7 +81,7 @@ spec:
     - host: "{{ .Values.ingress.url }}"
       http:
         paths:
-          - path: /
+          - path: {{ .Values.ingress.urlPath }}
             pathType: Prefix
             backend:
               service:

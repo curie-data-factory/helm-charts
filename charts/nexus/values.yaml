@@ -15,10 +15,13 @@ service:
 ingress:
   urldockerrelease: nexus-release.company.com
   urldockerreleasename: nexus-release
+  urlDockerReleasePath: /
   urldockersnapshot: nexus-snapshot.company.com
   urldockersnapshotname: nexus-snapshot
+  urlDockerSnapshotPath: /
   enabled: true
   url: nexus.company.com
+  urlPath: /
 
   tls:
   - hosts:
