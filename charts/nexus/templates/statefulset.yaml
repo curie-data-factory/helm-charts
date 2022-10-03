@@ -26,7 +26,9 @@ spec:
         - name: INSTALL4J_ADD_VM_PARAMS
           value: {{ .Values.containerJVMParam }}
         - name: JAVA_TOOL_OPTIONS
-          value: {{ .Values.java_tool_options}}          
+          value: {{ .Values.java_tool_options}}
+        - name: NEXUS_CONTEXT
+          value: {{ .Values.ingress.urlPath | replace "/" "" }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: {{ .Values.image.name }}
@@ -41,7 +43,7 @@ spec:
           name: dockerrelease
           protocol: TCP
         resources:
-{{- toYaml .Values.resources | nindent 12 }}         
+{{- toYaml .Values.resources | nindent 12 }}
         volumeMounts:
         - mountPath: /nexus-data/blobs
           name: "{{ .Release.Name }}-blobs"
