@@ -36,8 +36,6 @@ ingress:
   - hosts:
     - redcap.company.com
     secretName: redcap
-  spec:
-    ingressClassName: nginx
 
   annotations:
     nginx.ingress.kubernetes.io/client_max_body_size: "5000m"
