@@ -163,8 +163,3 @@ spec:
         - mountPath: /persistentedocs
           name: persistentedocs
       {{- end }}
-      {{- if .Values.persistence.enabled }}
-      - name: persistentedocs
-        persistentVolumeClaim:
-          claimName: {{ .Release.Name }}-{{ .Values.persistence.volumeName }}
-      {{- end }}
