@@ -150,16 +150,4 @@ spec:
       - name: persistentedocs
         persistentVolumeClaim:
           claimName: {{ .Release.Name }}-{{ .Values.persistence.volumeName }}
-      initContainers:
-      - args:
-        - chmod
-        - -R
-        - "777"
-        - /persistentedocs
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: chmod
-        volumeMounts:
-        - mountPath: /persistentedocs
-          name: persistentedocs
       {{- end }}
