@@ -67,6 +67,7 @@ The following table lists the configurable parameters of the chart and their def
 | `image.imagePullSecrets`         | Docker registry credentials Secret name          | `registrysecret`                                                    |
 | `image.dataSecret`               | Secret storing docker image registry credentials | `{"auths":{"registry.compagny.com":{"password":"","username":""}}}` |
 | `service.type`                   | Service Type                                     | `ClusterIP`                                                         |
+| `service.loadBalancerIP`         | Service LoadBalancerIP                           | `nil`                                                               |
 | `service.targetPort`             | Service Port                                     | `80`                                                                |
 | `service.protocol`               | Service Protocol                                 | `TCP`                                                               |
 | `ingress.enabled`                | Expose application with ingress                  | `true`                                                              |
