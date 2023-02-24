@@ -43,3 +43,14 @@ app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end -}}
+
+{{/*
+Create postgres host.
+*/}}
+{{- define "doccano.postgres_host" -}}
+{{- if .Values.postgresql.installAsDependency -}}
+{{- printf "%s-%s" .Release.Name "postgresql" | trunc 63 -}}
+{{- else -}}
+{{- .Values.postgresql.host -}}
+{{- end -}}
+{{- end -}}

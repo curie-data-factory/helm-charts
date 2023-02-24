@@ -13,6 +13,7 @@ maintainers:
 kubeVersion: ">= 1.14.0-0"
 dependencies:
   - name: postgresql
+    condition: postgresql.installAsDependency
     repository: https://charts.bitnami.com/bitnami
     version: 11.8.1
 keywords:
