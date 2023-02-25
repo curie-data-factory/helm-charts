@@ -40,7 +40,7 @@ spec:
               name: doccano-password
               optional: false
         - name: DATABASE_URL
-          value: "postgres://{{ .Values.postgresql.global.postgresql.auth.username }}:{{ .Values.postgresql.global.postgresql.auth.password }}@{{ .Release.Name }}-postgresql:5432/{{ .Values.postgresql.global.postgresql.auth.database }}?sslmode=disable"
+          value: "postgres://{{ .Values.postgresql.global.postgresql.auth.username }}:{{ .Values.postgresql.global.postgresql.auth.password }}@{{ include "doccano.postgres_host" . }}:5432/{{ .Values.postgresql.global.postgresql.auth.database }}?sslmode=disable"
         {{- if .Values.extraEnv }}
         {{- with .Values.extraEnv }}
 {{ toYaml . | indent 8 }}
