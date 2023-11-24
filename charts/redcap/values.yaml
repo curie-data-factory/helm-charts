@@ -26,8 +26,8 @@ cron:
   config: |-
     #!/bin/bash
     cp /config/mail/msmtprc /etc/msmtprc
-
     /usr/bin/php /var/www/site/cron.php
+
 livenesscheck: true
 
 service:
