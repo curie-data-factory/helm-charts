@@ -1,4 +1,4 @@
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: {{ .Release.Name }}-redcap-cron
@@ -39,11 +39,41 @@ spec:
                   key: SALT
                   name: redcap-server-secrets
                   optional: false
+            volumeMounts:
+            {{- if .Values.mail.enabled }}
+            - mountPath: /config/mail
+              name: mail
+            {{- end }}
+            {{- if .Values.mail.enabled }}
+            - mountPath: /config
+              name: cron-bootstrap
+            {{- end }}
+        {{- if .Values.persistence.enabled }}
             image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
             imagePullPolicy: {{ .Values.image.pullPolicy }}
             name: redcap-cron
           {{- if .Values.image.deployRegistry }}
           imagePullSecrets:
           - name: "{{ .Values.image.name }}-{{ .Values.image.imagePullSecrets }}"
+          {{- end }}
+          volumes:
+          {{- if .Values.mail.enabled }}
+          - configMap:
+              defaultMode: 256
+              items:
+              - key: cron-php.sh
+                path: ./cron-php.sh
+              name: "{{ .Release.Name }}-cron-bootstrap"
+              optional: false
+            name: cron-bootstrap
+          {{- end }}
+          {{- if .Values.mail.enabled }}
+          - configMap:
+              defaultMode: 420
+              name: "{{ .Release.Name }}-conf-mail"
+              items:
+              - key: msmtprc
+                path: ./msmtprc
+            name: mail
           {{- end }}
           restartPolicy: Never
