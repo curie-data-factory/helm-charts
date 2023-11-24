@@ -17,58 +17,62 @@ spec:
             name: redcap-cron
         spec:
           containers:
-          - args:
-            - /usr/bin/php
-            - /var/www/site/cron.php
+          - name: redcap-cron
+            image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+            imagePullPolicy: {{ .Values.image.pullPolicy }}
+            args:
+              - /usr/bin/php
+              - /var/www/site/cron.php
             env:
-            - name: DB_HOSTNAME
-              value: {{.Values.DB_HOSTNAME}}
-            - name: DB_NAME
-              value: {{.Values.DB_NAME}}
-            - name: DB_USERNAME
-              value: {{.Values.DB_USERNAME}}
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  key: DB_PASSWORD
-                  name: redcap-server-secrets
-                  optional: false
-            - name: SALT
-              valueFrom:
-                secretKeyRef:
-                  key: SALT
-                  name: redcap-server-secrets
-                  optional: false
-          {{- if .Values.mail.enabled }}
-          volumeMounts:
-          - mountPath: /config/mail
-            name: mail
-          - mountPath: /config
-            name: cron-bootstrap
+              - name: DB_HOSTNAME
+                value: {{.Values.DB_HOSTNAME}}
+              - name: DB_NAME
+                value: {{.Values.DB_NAME}}
+              - name: DB_USERNAME
+                value: {{.Values.DB_USERNAME}}
+              - name: DB_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    key: DB_PASSWORD
+                    name: redcap-server-secrets
+                    optional: false
+              - name: SALT
+                valueFrom:
+                  secretKeyRef:
+                    key: SALT
+                    name: redcap-server-secrets
+                    optional: false
+            {{- if .Values.mail.enabled }}
+            volumeMounts:
+              - mountPath: /config/mail
+                name: mail
+            {{- end }}
+            {{- if .Values.cron.enabled }}
+              - mountPath: /config
+                name: cron-bootstrap
+            {{- end }}
+          {{- if .Values.image.deployRegistry }}
+            imagePullSecrets:
+              - name: "{{ .Values.image.name }}-{{ .Values.image.imagePullSecrets }}"
           {{- end }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          name: redcap-cron
-        {{- if .Values.image.deployRegistry }}
-        imagePullSecrets:
-        - name: "{{ .Values.image.name }}-{{ .Values.image.imagePullSecrets }}"
-        {{- end }}
-        {{- if .Values.mail.enabled }}
-        volumes:
-        - configMap:
-            defaultMode: 256
-            items:
-            - key: cron-php.sh
-              path: ./cron-php.sh
-            name: "{{ .Release.Name }}-conf-mail-cron"
-            optional: false
-          name: cron-bootstrap
-        - configMap:
-            defaultMode: 420
-            name: "{{ .Release.Name }}-conf-mail"
-            items:
-            - key: msmtprc
-              path: ./msmtprc
-          name: mail
-        {{- end }}
-        restartPolicy: Never
+          volumes:
+            {{- if .Values.cron.enabled }}
+              - configMap:
+                  defaultMode: 256
+                  items:
+                    - key: boot-cron.sh
+                      path: ./boot-cron.sh
+                  name: "{{ .Release.Name }}-conf-mail-cron"
+                  optional: false
+                name: cron-bootstrap
+            {{- end }}
+            {{- if .Values.mail.enabled }}
+              - configMap:
+                  defaultMode: 420
+                  name: "{{ .Release.Name }}-conf-mail"
+                  items:
+                    - key: msmtprc
+                      path: ./msmtprc
+                name: mail
+            {{- end }}
+          restartPolicy: Never

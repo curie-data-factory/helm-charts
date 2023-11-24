@@ -31,7 +31,7 @@ metadata:
   name: "{{ .Release.Name | trunc 63 }}-conf-mail"
 data:
   msmtprc: |-
-{{ .Values.mail.config | indent 4 }}
+    {{ .Values.mail.config | indent 4 }}
 {{- end }}
 ---
 {{- if .Values.mail.enabled }}
@@ -41,5 +41,5 @@ metadata:
   name: "{{ .Release.Name | trunc 63 }}-conf-mail-cron"
 data:
   boot-cron.sh: |-
-{{ .Values.mail.config | indent 4 }}
+    {{ .Values.mail.config | indent 4 }}
 {{- end }}
