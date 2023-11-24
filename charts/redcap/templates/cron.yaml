@@ -48,10 +48,11 @@ spec:
             - mountPath: /config
               name: cron-bootstrap
             {{- end }}
-        {{- if .Values.persistence.enabled }}
-            image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-            imagePullPolicy: {{ .Values.image.pullPolicy }}
-            name: redcap-cron
+          {{- if .Values.persistence.enabled }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          name: redcap-cron          
+          {{- end }}
           {{- if .Values.image.deployRegistry }}
           imagePullSecrets:
           - name: "{{ .Values.image.name }}-{{ .Values.image.imagePullSecrets }}"
