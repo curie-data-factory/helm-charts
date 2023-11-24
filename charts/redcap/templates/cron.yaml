@@ -18,8 +18,8 @@ spec:
         spec:
           containers:
           - args:
-            - /usr/bin/php
-            - /var/www/site/cron.php
+            - /bin/bash
+            - /config/boot-cron.sh
             env:
             - name: DB_HOSTNAME
               value: {{.Values.DB_HOSTNAME}}
@@ -39,8 +39,8 @@ spec:
                   key: SALT
                   name: redcap-server-secrets
                   optional: false
-            {{- if .Values.mail.enabled }}
             volumeMounts:
+            {{- if .Values.mail.enabled }}
               - mountPath: /config/mail
                 name: mail
             {{- end }}
@@ -63,7 +63,6 @@ spec:
                     - key: boot-cron.sh
                       path: ./boot-cron.sh
                   name: "{{ .Release.Name }}-conf-mail-cron"
-                  optional: false
                 name: cron-bootstrap
             {{- end }}
             {{- if .Values.mail.enabled }}
