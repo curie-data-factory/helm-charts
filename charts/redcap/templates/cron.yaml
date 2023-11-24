@@ -41,8 +41,7 @@ spec:
                   optional: false
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          name: redcap-cron          
-          {{- end }}
+          name: redcap-cron
           {{- if .Values.image.deployRegistry }}
           imagePullSecrets:
           - name: "{{ .Values.image.name }}-{{ .Values.image.imagePullSecrets }}"
