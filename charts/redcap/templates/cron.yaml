@@ -39,26 +39,20 @@ spec:
                   key: SALT
                   name: redcap-server-secrets
                   optional: false
-            volumeMounts:
-            {{- if .Values.mail.enabled }}
-            - mountPath: /config/mail
-              name: mail
-            {{- end }}
-            {{- if .Values.mail.enabled }}
-            - mountPath: /config
-              name: cron-bootstrap
-            {{- end }}
-          {{- if .Values.persistence.enabled }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          name: redcap-cron          
-          {{- end }}
+          name: redcap-cron
           {{- if .Values.image.deployRegistry }}
           imagePullSecrets:
           - name: "{{ .Values.image.name }}-{{ .Values.image.imagePullSecrets }}"
           {{- end }}
-          volumes:
           {{- if .Values.mail.enabled }}
+          volumeMounts:
+          - mountPath: /config/mail
+            name: mail
+          - mountPath: /config
+            name: cron-bootstrap
+          volumes:
           - configMap:
               defaultMode: 256
               items:
@@ -67,8 +61,6 @@ spec:
               name: "{{ .Release.Name }}-conf-mail-cron"
               optional: false
             name: cron-bootstrap
-          {{- end }}
-          {{- if .Values.mail.enabled }}
           - configMap:
               defaultMode: 420
               name: "{{ .Release.Name }}-conf-mail"
