@@ -34,12 +34,12 @@ data:
     {{ .Values.mail.config | indent 4 }}
 {{- end }}
 ---
-{{- if .Values.mail.enabled }}
+{{- if .Values.cron.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: "{{ .Release.Name | trunc 63 }}-conf-mail-cron"
 data:
   boot-cron.sh: |-
-    {{ .Values.mail.config | indent 4 }}
+    {{ .Values.cron.config | indent 4 }}
 {{- end }}

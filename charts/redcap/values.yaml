@@ -21,6 +21,13 @@ mail:
     # Set a default account
     account default : redcapmailuser
 
+cron:
+  enabled: true
+  config: |-
+    #!/bin/bash
+    cp /config/mail/msmtprc /etc/msmtprc
+
+    /usr/bin/php /var/www/site/cron.php
 livenesscheck: true
 
 service:
