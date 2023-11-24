@@ -39,6 +39,7 @@ spec:
                   key: SALT
                   name: redcap-server-secrets
                   optional: false
+
             {{- if .Values.mail.enabled }}
             volumeMounts:
             - mountPath: /config/mail
