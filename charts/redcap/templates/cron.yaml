@@ -63,7 +63,7 @@ spec:
               items:
               - key: cron-php.sh
                 path: ./cron-php.sh
-              name: "{{ .Release.Name }}-cron-bootstrap"
+              name: "{{ .Release.Name }}-conf-mail-cron"
               optional: false
             name: cron-bootstrap
           {{- end }}
