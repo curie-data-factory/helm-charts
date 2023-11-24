@@ -43,6 +43,7 @@ persistence:
     helm.sh/resource-policy: keep
 
 postgresql:
+  installAsDependency: true
   image:
     tag: 11.14.0-debian-10-r28
   global:

@@ -57,3 +57,5 @@ The following table lists the configurable parameters of the chart and their def
 | `persistence.replicas`           | PVC storage class replicas (if possible)                             | `1`                                                                 |
 | `persistence.volumeName`         | Directory name                                                       | `data`                                                              |
 | `persistence.mountPath`          | Directory mount path                                                 | `/data`                                                             |
+| `postgresql.installAsDependency` | Install Postgres as a subchart (disable to use an external instance) | `true`                                                              |
+| `postgresql.host`                | Host of the external Postgres instance (if not using internal one)   | `nil`                                                               |
