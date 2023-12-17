@@ -13,6 +13,30 @@ env:
   ADMIN_EMAIL: admin@localhost
   ADMIN_USERNAME: admin
 
+init:
+  image:
+    repository: busybox
+    tag: latest
+    pullPolicy: IfNotPresent
+  resources:
+    requests:
+      cpu: 50m
+      memory: 32M
+    limits:
+      cpu: 100m
+      memory: 64M
+
+extraEnv:
+  DEBUG: false
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 1G
+  limits:
+    cpu: 500m
+    memory: 2G
+
 deploySecret: true
 ADMIN_PASSWORD: password
 
