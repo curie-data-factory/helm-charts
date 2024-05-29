@@ -7,6 +7,8 @@ spec:
   jobTemplate:
     spec:
       activeDeadlineSeconds: 30
+      successfulJobsHistoryLimit: 1
+      failedJobsHistoryLimit: 1
       backoffLimit: 1
       completions: 1
       parallelism: 1
