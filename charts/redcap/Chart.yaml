@@ -3,7 +3,7 @@ name: redcap
 description: Helm chart for RedCap, A CRF Application for survey research.
 type: application
 appVersion: 10.6.13
-version: 1.10.20
+version: 1.10.21
 home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/redcap
 icon: https://www.redcapbrasil.com.br/wp-content/uploads/2018/02/rbone.png
 sources:

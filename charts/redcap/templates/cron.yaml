@@ -4,11 +4,11 @@ metadata:
   name: {{ .Release.Name }}-redcap-cron
 spec:
   schedule: "{{ .Values.CRON_TASK_SCHEDULE }}"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
   jobTemplate:
     spec:
       activeDeadlineSeconds: 30
-      successfulJobsHistoryLimit: 1
-      failedJobsHistoryLimit: 1
       backoffLimit: 1
       completions: 1
       parallelism: 1
