@@ -158,6 +158,38 @@ entries:
           image: doccano/doccano:1.8.0
     apiVersion: v2
     appVersion: 1.8.0
+    created: "2024-05-29T12:24:53.442724342Z"
+    dependencies:
+    - condition: postgresql.installAsDependency
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.8.1
+    description: A Helm chart for doccano, Open source text annotation tool for machine
+      learning practitioner.
+    digest: 65f1e1c767deab5622cceb0e25982e04e7e51054049496447d7e818576d41fe9
+    home: https://doccano.herokuapp.com/
+    icon: https://raw.githubusercontent.com/doccano/doccano/master/docs/images/logo/doccano.png
+    keywords:
+    - annotation
+    - ml
+    - text
+    - machine-learning
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: doccano
+    sources:
+    - https://github.com/doccano/doccano
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/doccano-2.0.8/doccano-2.0.8.tgz
+    version: 2.0.8
+  - annotations:
+      artifacthub.io/images: |
+        - name: doccano
+          image: doccano/doccano:1.8.0
+    apiVersion: v2
+    appVersion: 1.8.0
     created: "2023-02-25T10:46:10.323456885Z"
     dependencies:
     - condition: postgresql.installAsDependency
@@ -2462,6 +2494,28 @@ entries:
   redcap:
   - apiVersion: v2
     appVersion: 10.6.13
+    created: "2024-05-29T12:24:53.544138433Z"
+    description: Helm chart for RedCap, A CRF Application for survey research.
+    digest: 35942b4405956ee966747515fe623d11d3e064da1d9f29293e2f208163980dce
+    home: https://github.com/curie-data-factory/helm-charts/tree/master/charts/redcap
+    icon: https://www.redcapbrasil.com.br/wp-content/uploads/2018/02/rbone.png
+    keywords:
+    - redcap
+    - crf
+    - research
+    kubeVersion: '>= 1.14.0-0'
+    maintainers:
+    - email: armand.leopold@curie.fr
+      name: armandleopold
+    name: redcap
+    sources:
+    - https://www.project-redcap.org/
+    type: application
+    urls:
+    - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.10.20/redcap-1.10.20.tgz
+    version: 1.10.20
+  - apiVersion: v2
+    appVersion: 10.6.13
     created: "2023-11-24T17:21:20.534242416Z"
     description: Helm chart for RedCap, A CRF Application for survey research.
     digest: 4b3436cb99595b1a128ba9a731483a4651387e15d0bf8ce71f83a8995506b8ed
@@ -3140,4 +3194,4 @@ entries:
     urls:
     - https://github.com/curie-data-factory/helm-charts/releases/download/redcap-1.9.6/redcap-1.9.6.tgz
     version: 1.9.6
-generated: "2023-11-24T17:21:20.534799495Z"
+generated: "2024-05-29T12:24:53.544790435Z"
